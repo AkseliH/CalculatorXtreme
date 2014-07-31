@@ -1,0 +1,85 @@
+
+package laskin.calculatorxtreme.sovelluslogiikka;
+
+public class LuvunKasittelija {
+    
+    private String lauseke;
+    private int paikka;
+    private boolean desimaalipisteLoydetty;
+    
+    public LuvunKasittelija(String lauseke, int aloitusPaikka) {
+        this.lauseke = lauseke;
+        this.paikka = aloitusPaikka;
+        this.desimaalipisteLoydetty = false;
+    }
+    
+    public double lueLuku() {
+        
+        int aloituspaikka = paikka;
+        
+        if (lauseke == null || !paikkaSisaltyyLausekkeeseen()
+                || !paikkaSisaltaaNumeron()) {
+            System.out.println("aaa");
+            //heittaa jonkin virheilmoituksen
+        }
+        
+        while (true) {
+            
+            if (!merkkiOsaLukua()) {
+                break;
+            }
+            
+            paikka++;
+        }
+        
+        double luku = Double.parseDouble(lauseke.substring(aloituspaikka, paikka));
+        
+        return luku;
+    
+    }
+    
+    private boolean kasitteleDesimaalipiste() {        
+        if (!desimaalipisteLoydetty) {
+            desimaalipisteLoydetty = true;
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private boolean merkkiOsaLukua() {
+        if (!paikkaSisaltyyLausekkeeseen()) {
+            return false;
+        }
+        
+        if (paikkaSisaltaaNumeron()) {
+            return true;
+        }
+        
+        if (paikkaSisaltaaDesimaalipisteen()) {
+            return kasitteleDesimaalipiste();
+        }
+        
+        return false;
+    }
+    
+    private boolean paikkaSisaltaaNumeron() {                
+        return lauseke.substring(paikka, paikka + 1).matches("[0-9]");        
+    }
+    
+    private boolean paikkaSisaltaaDesimaalipisteen() {
+        return lauseke.substring(paikka, paikka + 1).equals(".");
+    }
+    
+    private boolean paikkaSisaltyyLausekkeeseen() {
+        if (paikka >= 0 && paikka < lauseke.length()) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public int getPaikka() {
+        return paikka;
+    }
+}

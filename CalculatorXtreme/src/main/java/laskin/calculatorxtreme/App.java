@@ -1,13 +1,15 @@
 package laskin.calculatorxtreme;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import laskin.calculatorxtreme.sovelluslogiikka.LuvunKasittelija;
+
+public class App {
+    
+    public static void main( String[] args ) {
+        
+        LuvunKasittelija luvunKasittelija = new LuvunKasittelija("xg12.3..5jkl",5);
+        
+        double luku = luvunKasittelija.lueLuku();
+        System.out.println(luku);
+        System.out.println(luku + 1);
     }
 }
