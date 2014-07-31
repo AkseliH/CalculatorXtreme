@@ -13,7 +13,7 @@ public class LuvunKasittelija {
         this.desimaalipisteLoydetty = false;
     }
     
-    public double lueLuku() {
+    public Arvollinen lueLuku() {
         
         int aloituspaikka = paikka;
         
@@ -32,7 +32,8 @@ public class LuvunKasittelija {
             paikka++;
         }
         
-        double luku = Double.parseDouble(lauseke.substring(aloituspaikka, paikka));
+        Arvollinen luku = new Luku(Double.parseDouble(
+                lauseke.substring(aloituspaikka, paikka)));
         
         return luku;
     
