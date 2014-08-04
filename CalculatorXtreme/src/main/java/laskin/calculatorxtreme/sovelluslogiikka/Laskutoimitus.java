@@ -4,8 +4,10 @@ public abstract class Laskutoimitus implements Arvollinen {
     
     private Arvollinen etujasen;
     private Arvollinen takajasen;
+    private int prioriteetti;
     
-    public Laskutoimitus() {
+    public Laskutoimitus(int prioriteetti) {
+        this.prioriteetti = prioriteetti;
     }
     
     public void setEtujasen(Arvollinen etujasen) {
@@ -24,6 +26,18 @@ public abstract class Laskutoimitus implements Arvollinen {
         return takajasen;
     }
     
+    public boolean laskettavatAsetettu() {
+        if (etujasen == null || takajasen == null) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public int getPrioriteetti() {
+        return prioriteetti;
+    }
+    
     @Override
-    public abstract double arvo();
+    public abstract double arvo() throws IllegalStateException;
 }

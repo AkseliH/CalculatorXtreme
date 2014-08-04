@@ -13,14 +13,13 @@ public class LuvunKasittelija {
         this.desimaalipisteLoydetty = false;
     }
     
-    public Arvollinen lueLuku() {
+    public Arvollinen lueLuku() throws IllegalStateException {
         
         int aloituspaikka = paikka;
         
         if (lauseke == null || !paikkaSisaltyyLausekkeeseen()
                 || !paikkaSisaltaaNumeron()) {
-            System.out.println("aaa");
-            //heittaa jonkin virheilmoituksen
+            throw new IllegalStateException();
         }
         
         while (true) {

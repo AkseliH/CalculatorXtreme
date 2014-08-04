@@ -1,5 +1,5 @@
 package laskin.calculatorxtreme.sovelluslogiikka;
 
 public interface Arvollinen {
-    double arvo();
+    double arvo() throws IllegalStateException;
 }
