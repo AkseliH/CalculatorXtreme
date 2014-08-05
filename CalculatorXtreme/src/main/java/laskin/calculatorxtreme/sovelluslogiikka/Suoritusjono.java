@@ -48,6 +48,7 @@ public class Suoritusjono implements Arvollinen {
         
         if (this.onTyhja()) {
             this.asetaEnsimmainen(lisattava);
+            return;
         }
         
         

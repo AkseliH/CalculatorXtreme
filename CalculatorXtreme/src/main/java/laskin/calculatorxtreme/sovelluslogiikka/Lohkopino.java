@@ -5,14 +5,12 @@ import java.util.List;
 
 public class Lohkopino implements Arvollinen {
     
-    private Suoritusjono paalohko;
-    private List<Suoritusjono> lohkot;
-    private SuoritusjononKasittelija kasittelija;
+    private SuoritusjononKasittelija paalohko;
+    private List<SuoritusjononKasittelija> lohkot;
     
     public Lohkopino() {
-        this.paalohko = new Suoritusjono();
-        this.lohkot = new ArrayList<Suoritusjono>();
-        this.kasittelija = new SuoritusjononKasittelija(paalohko);
+        this.paalohko = new SuoritusjononKasittelija();
+        this.lohkot = new ArrayList<SuoritusjononKasittelija>();
     }
     
     public boolean onTyhja() {
@@ -20,15 +18,13 @@ public class Lohkopino implements Arvollinen {
     }
     
     public void avaaUusiLohko() {
-        Suoritusjono uusiLohko = new Suoritusjono();
-        
-        kasittelija.lisaaJonoonArvollinen(uusiLohko);
+        SuoritusjononKasittelija uusiLohko = new SuoritusjononKasittelija();
+        this.nykyinenLohko().lisaaJonoonArvollinen(uusiLohko);
         
         lohkot.add(uusiLohko);
-        kasittelija.setJono(uusiLohko);
     }
     
-    public Suoritusjono nykyinenLohko() {
+    public SuoritusjononKasittelija nykyinenLohko() {
         if (this.onTyhja()) {
             return paalohko;
         }
@@ -39,29 +35,27 @@ public class Lohkopino implements Arvollinen {
     
     
     public void lisaaFunktioJaAvaaLohko(Funktio funktio) {
-        kasittelija.lisaaJonoonArvollinen(funktio);
-        Suoritusjono uusiLohko = new Suoritusjono();
+        this.nykyinenLohko().lisaaJonoonArvollinen(funktio);
+        SuoritusjononKasittelija uusiLohko = new SuoritusjononKasittelija();
         funktio.setArgumentti(uusiLohko);
         
         lohkot.add(uusiLohko);
-        kasittelija.setJono(uusiLohko);
         
     }
     
     public void lisaaArvollinen(Arvollinen arvollinen) {
-        kasittelija.lisaaJonoonArvollinen(arvollinen);
+        this.nykyinenLohko().lisaaJonoonArvollinen(arvollinen);
     }
     
     public void lisaaLaskutoimitus(Laskutoimitus laskutoimitus) {
-        kasittelija.lisaaJonoonLaskutoimitus(laskutoimitus);
+        this.nykyinenLohko().lisaaJonoonLaskutoimitus(laskutoimitus);
     }
     
     public void suljeLohko() {
-        kasittelija.paataJono();
+        this.nykyinenLohko().paataJono();
         
-        if (!lohkot.isEmpty()) {
+        if (!this.onTyhja()) {
             lohkot.remove(lohkot.size() - 1);
-            kasittelija.setJono(this.nykyinenLohko());
         }
         
     }

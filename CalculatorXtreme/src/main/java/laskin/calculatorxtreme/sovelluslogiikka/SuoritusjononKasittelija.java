@@ -1,6 +1,6 @@
 package laskin.calculatorxtreme.sovelluslogiikka;
 
-public class SuoritusjononKasittelija {
+public class SuoritusjononKasittelija implements Arvollinen {
     
     private Suoritusjono jono;
     
@@ -38,4 +38,11 @@ public class SuoritusjononKasittelija {
     public void paataJono() throws IllegalStateException {
         jono.paataJono();
     }
+
+    @Override
+    public double arvo() throws IllegalStateException {
+        return jono.arvo();
+    }
+    
+    
 }
