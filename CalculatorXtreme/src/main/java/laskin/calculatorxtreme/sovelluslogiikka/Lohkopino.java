@@ -34,7 +34,7 @@ public class Lohkopino implements Arvollinen {
     
     
     
-    public void lisaaFunktioJaAvaaLohko(Funktio funktio) {
+    public void lisaaFunktioJaAvaaLohko(Funktio funktio) throws IllegalArgumentException {
         this.nykyinenLohko().lisaaJonoonArvollinen(funktio);
         SuoritusjononKasittelija uusiLohko = new SuoritusjononKasittelija();
         funktio.setArgumentti(uusiLohko);
@@ -51,7 +51,7 @@ public class Lohkopino implements Arvollinen {
         this.nykyinenLohko().lisaaJonoonLaskutoimitus(laskutoimitus);
     }
     
-    public void suljeLohko() {
+    public void suljeLohko() throws IllegalStateException {
         this.nykyinenLohko().paataJono();
         
         if (!this.onTyhja()) {

@@ -41,6 +41,9 @@ public class SuoritusjononKasittelija implements Arvollinen {
 
     @Override
     public double arvo() throws IllegalStateException {
+        if (jono == null) {
+            throw new IllegalStateException();
+        }
         return jono.arvo();
     }
     

@@ -25,5 +25,5 @@ public abstract class Funktio implements Arvollinen {
     }
     
     @Override
-    public abstract double arvo();
+    public abstract double arvo() throws IllegalStateException;
 }

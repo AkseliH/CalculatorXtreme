@@ -7,3 +7,5 @@ aiheen maarittely ja tuntikirjanpidon aloitus.
 
 **4.8.2014** 3h 30min: Laskulogiikan ohjelmointia. Nyt lukuja ja laskutoimituksia sisaltavan lausekkeen voi laskea
 rakentamalla sen itse luku/laskutoimitus kerrallaan. Ohjelma huolehtii laskujarjestyksesta.
+
+**5.8.2014** 4h 30min: Lausekelogiikan kehitysta. Lausekelogiikan perusrunko melko pitkalle valmis.
