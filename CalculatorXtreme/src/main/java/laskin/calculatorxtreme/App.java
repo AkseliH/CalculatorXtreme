@@ -6,23 +6,34 @@ public class App {
     
     public static void main( String[] args ) {
         
-        //System.out.println("Hello world!");
-        Suoritusjono jono = new Suoritusjono();
-        SuoritusjononKasittelija kasittelija = new SuoritusjononKasittelija(jono);
+        System.out.println("Hello world!");
+        //(1+2)*3+sin(PI/2)*4
         
-        kasittelija.lisaaJonoonArvollinen(new Luku(1));
-        kasittelija.lisaaJonoonLaskutoimitus(new Plus());
-        kasittelija.lisaaJonoonArvollinen(new Luku(2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Kertolasku());
-        kasittelija.lisaaJonoonArvollinen(new Luku(3));
-        kasittelija.lisaaJonoonLaskutoimitus(new Kertolasku());
-        kasittelija.lisaaJonoonArvollinen(new Luku(4));
-        kasittelija.lisaaJonoonLaskutoimitus(new Plus());
-        kasittelija.lisaaJonoonArvollinen(new Luku(5));
-        kasittelija.lisaaJonoonLaskutoimitus(new Kertolasku());
-        kasittelija.lisaaJonoonArvollinen(new Luku(6));
         
-        System.out.println(kasittelija.valmisSuoritusjono().arvo());
+//        Lohkopino lauseke = new Lohkopino();
+//        
+//        lauseke.avaaUusiLohko();
+//        lauseke.lisaaArvollinen(new Luku(1));
+//        lauseke.lisaaLaskutoimitus(new Plus());
+//        lauseke.lisaaArvollinen(new Luku(2));
+//        lauseke.suljeLohko();
+//        
+//        lauseke.lisaaLaskutoimitus(new Kertolasku());
+//        lauseke.lisaaArvollinen(new Luku(3));
+//        lauseke.lisaaLaskutoimitus(new Plus());
+//        lauseke.lisaaFunktioJaAvaaLohko(new Sinifunktio());
+//        lauseke.lisaaArvollinen(new Luku(Math.PI));
+//        lauseke.lisaaLaskutoimitus(new Jakolasku());
+//        lauseke.lisaaArvollinen(new Luku(2));
+//        lauseke.suljeLohko();
+//        
+////        lauseke.lisaaLaskutoimitus(new Kertolasku());
+//        lauseke.lisaaArvollinen(new Luku(4));
+//        
+//        lauseke.suljeLohko();
+//        
+//        System.out.println(lauseke.arvo());
+        
         
         
     }

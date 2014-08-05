@@ -8,7 +8,16 @@ public class SuoritusjononKasittelija {
         this.jono = jono;
     }
     
-    public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) throws IllegalArgumentException, IllegalStateException {
+    public SuoritusjononKasittelija() {
+        this(new Suoritusjono());
+    }
+    
+    public void setJono(Suoritusjono jono) {
+        this.jono = jono;
+    }
+    
+    public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) 
+            throws IllegalArgumentException, IllegalStateException {
        if (lisattava == null) {
            throw new IllegalArgumentException();
        }
@@ -26,8 +35,7 @@ public class SuoritusjononKasittelija {
         jono.lisaaSeuraavaArvollinen(lisattava);
     }
     
-    public Suoritusjono valmisSuoritusjono() throws IllegalStateException {
+    public void paataJono() throws IllegalStateException {
         jono.paataJono();
-        return jono;
     }
 }
