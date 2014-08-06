@@ -23,6 +23,18 @@ public class Suoritusjono implements Arvollinen {
         return false;
     }
     
+    public Laskutoimitus getEnsimmainen() {
+        return ensimmainen;
+    }
+    
+    public Laskutoimitus getViimeinen() {
+        return viimeinen;
+    }
+    
+    public Arvollinen getSeuraavaArvollinen() {
+        return seuraavaArvollinen;
+    }
+    
     public void asetaEnsimmainen(Laskutoimitus ensimmainen) throws IllegalArgumentException, IllegalStateException {
         if (ensimmainen == null) {
             throw new IllegalArgumentException();
