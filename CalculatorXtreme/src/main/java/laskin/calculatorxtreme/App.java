@@ -33,6 +33,8 @@ public class App {
         
         lauseke.suljeLohko();
         
+
+        
         System.out.println(lauseke.arvo());
         
         

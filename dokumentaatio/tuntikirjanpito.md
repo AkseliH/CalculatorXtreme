@@ -11,3 +11,5 @@ rakentamalla sen itse luku/laskutoimitus kerrallaan. Ohjelma huolehtii laskujarj
 **5.8.2014** 4h 30min: Lausekelogiikan kehitysta. Lausekelogiikan perusrunko melko pitkalle valmis.
 
 **6.8.2014** 2h: Testien ohjelmointia.
+
+**7.8.2014** 1 h: Luokkakaavion piirtamista ja PIT raportin teko.
