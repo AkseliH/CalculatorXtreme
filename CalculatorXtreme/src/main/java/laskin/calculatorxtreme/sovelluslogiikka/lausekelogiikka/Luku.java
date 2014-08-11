@@ -1,4 +1,6 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
+
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Arvollinen;
 
 public class Luku implements Arvollinen {
     

@@ -1,6 +1,9 @@
 package laskin.calculatorxtreme;
 
-import laskin.calculatorxtreme.sovelluslogiikka.*;
+
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.*;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.*;
+import laskin.calculatorxtreme.sovelluslogiikka.MerkkijononKasittelija;
 
 public class App {
     
@@ -11,31 +14,39 @@ public class App {
 
         //(1+2)*3+sin(PI/2)*4
                                 
-        Lohkopino lauseke = new Lohkopino();
+//        Lohkopino lauseke = new Lohkopino();
+//        
+//        lauseke.avaaUusiLohko();
+//        lauseke.lisaaArvollinen(new Luku(1));
+//        lauseke.lisaaLaskutoimitus(new Plus());
+//        lauseke.lisaaArvollinen(new Luku(2));
+//        lauseke.suljeLohko();
+//        
+//        lauseke.lisaaLaskutoimitus(new Kertolasku());
+//        lauseke.lisaaArvollinen(new Luku(3));
+//        lauseke.lisaaLaskutoimitus(new Plus());
+//        lauseke.lisaaFunktioJaAvaaLohko(new Sinifunktio());
+//        lauseke.lisaaArvollinen(new Luku(Math.PI));
+//        lauseke.lisaaLaskutoimitus(new Jakolasku());
+//        lauseke.lisaaArvollinen(new Luku(2));
+//        lauseke.suljeLohko();
+//        
+//        lauseke.lisaaLaskutoimitus(new Kertolasku());
+//        lauseke.lisaaArvollinen(new Luku(4));
+//        
+//        lauseke.suljeLohko();
+//        
+//
+//        
+//        System.out.println(lauseke.arvo());
         
-        lauseke.avaaUusiLohko();
-        lauseke.lisaaArvollinen(new Luku(1));
-        lauseke.lisaaLaskutoimitus(new Plus());
-        lauseke.lisaaArvollinen(new Luku(2));
-        lauseke.suljeLohko();
+        ToimintoKirjasto kirjasto = new ToimintoKirjasto();
+        kirjasto.lisaaLaskutoimitukset();
+        MerkkijononKasittelija kasittelija = new MerkkijononKasittelija(
+                "12.5+3*6.5+2*2*3+5", kirjasto);
         
-        lauseke.lisaaLaskutoimitus(new Kertolasku());
-        lauseke.lisaaArvollinen(new Luku(3));
-        lauseke.lisaaLaskutoimitus(new Plus());
-        lauseke.lisaaFunktioJaAvaaLohko(new Sinifunktio());
-        lauseke.lisaaArvollinen(new Luku(Math.PI));
-        lauseke.lisaaLaskutoimitus(new Jakolasku());
-        lauseke.lisaaArvollinen(new Luku(2));
-        lauseke.suljeLohko();
-        
-        lauseke.lisaaLaskutoimitus(new Kertolasku());
-        lauseke.lisaaArvollinen(new Luku(4));
-        
-        lauseke.suljeLohko();
-        
-
-        
-        System.out.println(lauseke.arvo());
+        kasittelija.kasitteleLauseke();
+        System.out.println(kasittelija.getLauseke().arvo());
         
         
         

@@ -1,4 +1,5 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
+
 
 import java.util.ArrayList;
 import java.util.List;

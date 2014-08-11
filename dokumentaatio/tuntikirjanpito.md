@@ -13,3 +13,6 @@ rakentamalla sen itse luku/laskutoimitus kerrallaan. Ohjelma huolehtii laskujarj
 **6.8.2014** 2h: Testien ohjelmointia.
 
 **7.8.2014** 1 h: Luokkakaavion piirtamista ja PIT raportin teko.
+
+**11.8.2014** 2h 30 min: Merkkijonojen tulkinnan logiikan hahmottelemista. Perusrunko yksinkertaisten lausekkeiden
+konstruoimiseen merkkijonosta ohjelmoitu.

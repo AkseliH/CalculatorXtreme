@@ -1,6 +1,9 @@
 
 package laskin.calculatorxtreme.sovelluslogiikka;
 
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Arvollinen;
+
 public class LuvunKasittelija {
     
     private String lauseke;

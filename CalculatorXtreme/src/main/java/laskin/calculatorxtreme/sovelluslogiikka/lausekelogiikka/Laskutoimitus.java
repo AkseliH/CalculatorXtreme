@@ -1,4 +1,5 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
+
 
 public abstract class Laskutoimitus implements Arvollinen {
     

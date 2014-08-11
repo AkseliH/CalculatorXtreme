@@ -1,4 +1,6 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
+
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 
 public class Plus extends Laskutoimitus {
     

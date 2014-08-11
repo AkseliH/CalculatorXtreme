@@ -1,4 +1,4 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
 public class SuoritusjononKasittelija implements Arvollinen {
     
