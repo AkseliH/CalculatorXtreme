@@ -6,21 +6,22 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Arvollinen;
 
 public class LuvunKasittelija {
     
-    private String lauseke;
+    private String syote;
     private int paikka;
     private boolean desimaalipisteLoydetty;
     
     public LuvunKasittelija(String lauseke, int aloitusPaikka) {
-        this.lauseke = lauseke;
+        this.syote = lauseke;
         this.paikka = aloitusPaikka;
         this.desimaalipisteLoydetty = false;
     }
     
-    public Arvollinen lueLuku() throws IllegalStateException {
+    public Arvollinen lueLuku() 
+            throws IllegalStateException, IllegalArgumentException {
         
         int aloituspaikka = paikka;
         
-        if (lauseke == null || !paikkaSisaltyyLausekkeeseen()
+        if (syote == null || !paikkaSisaltyySyotteeseen()
                 || !paikkaSisaltaaNumeron()) {
             throw new IllegalStateException();
         }
@@ -35,7 +36,7 @@ public class LuvunKasittelija {
         }
         
         Arvollinen luku = new Luku(Double.parseDouble(
-                lauseke.substring(aloituspaikka, paikka)));
+                syote.substring(aloituspaikka, paikka)));
         
         return luku;
     
@@ -51,7 +52,7 @@ public class LuvunKasittelija {
     }
     
     private boolean merkkiOsaLukua() {
-        if (!paikkaSisaltyyLausekkeeseen()) {
+        if (!paikkaSisaltyySyotteeseen()) {
             return false;
         }
         
@@ -67,15 +68,15 @@ public class LuvunKasittelija {
     }
     
     private boolean paikkaSisaltaaNumeron() {                
-        return lauseke.substring(paikka, paikka + 1).matches("[0-9]");        
+        return syote.substring(paikka, paikka + 1).matches("[0-9]");        
     }
     
     private boolean paikkaSisaltaaDesimaalipisteen() {
-        return lauseke.substring(paikka, paikka + 1).equals(".");
+        return syote.substring(paikka, paikka + 1).equals(".");
     }
     
-    private boolean paikkaSisaltyyLausekkeeseen() {
-        if (paikka >= 0 && paikka < lauseke.length()) {
+    private boolean paikkaSisaltyySyotteeseen() {
+        if (paikka >= 0 && paikka < syote.length()) {
             return true;
         }
         

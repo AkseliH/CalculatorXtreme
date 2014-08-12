@@ -5,7 +5,7 @@ import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Jakolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Plus;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lohkopino;
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,11 +13,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LohkopinoTest {
+public class LausekeTest {
     
-    Lohkopino lauseke;
+    Lauseke lauseke;
     
-    public LohkopinoTest() {
+    public LausekeTest() {
     }
     
     @BeforeClass
@@ -30,7 +30,7 @@ public class LohkopinoTest {
     
     @Before
     public void setUp() {
-        lauseke = new Lohkopino();
+        lauseke = new Lauseke();
     }
     
     @After

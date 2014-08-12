@@ -1,25 +1,25 @@
 package laskin.calculatorxtreme.sovelluslogiikka;
 
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lohkopino;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
-public class ToiminnonKasittelija {
+public class FunktionKasittelija {
     
     private ToimintoKirjasto kirjasto;
-    private Lohkopino lauseke;
+    private Lauseke lauseke;
     private String syote;
     private int paikka;
     
-    public ToiminnonKasittelija(ToimintoKirjasto kirjasto, String syote, 
-            Lohkopino lauseke, int paikka) {
+    public FunktionKasittelija(ToimintoKirjasto kirjasto, String syote, 
+            Lauseke lauseke, int paikka) {
         this.kirjasto = kirjasto;
         this.syote = syote;
         this.lauseke = lauseke;
         this.paikka = paikka;
     }
     
-    public void lueToiminto() throws IllegalStateException {
+    public void lueFunktio() throws IllegalStateException {
         
         if (!merkkiOsaTunnusta()) {
             throw new IllegalStateException();
@@ -36,18 +36,18 @@ public class ToiminnonKasittelija {
             paikka++;
         }
         
-        Laskutoimitus lisattava = kirjasto.haeLaskutoimitus(
+        Funktio lisattava = kirjasto.haeFunktio(
                 syote.substring(aloituspaikka, paikka));
         
-        if (lisattava == null) {
+        if (lisattava == null || !funktiotaSeuraaSulku()) {
             throw new IllegalStateException();
         }
         
-        lauseke.lisaaLaskutoimitus(lisattava);
+        lauseke.lisaaFunktioJaAvaaLohko(lisattava);
     }
     
     private boolean merkkiOsaTunnusta() {
-        if (!paikkaSisaltyyLausekkeeseen()) {
+        if (!paikkaSisaltyySyotteeseen()) {
             return false;
         }
         
@@ -58,7 +58,16 @@ public class ToiminnonKasittelija {
         return false;
     }
     
-    private boolean paikkaSisaltyyLausekkeeseen() {
+    private boolean funktiotaSeuraaSulku() {
+        if (syote.substring(paikka, paikka + 1).equals("(")) {
+            paikka++;
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private boolean paikkaSisaltyySyotteeseen() {
         if (paikka >= 0 && paikka < syote.length()) {
             return true;
         }
@@ -68,11 +77,6 @@ public class ToiminnonKasittelija {
     
     private boolean paikkaSisaltaaSallitunMerkin() {
         if (syote.substring(paikka, paikka + 1).toLowerCase().matches("[a-z]")) {
-            return true;
-        }
-        
-        if (syote.substring(paikka, paikka + 1)
-                .matches("[+|*]")) {
             return true;
         }
         

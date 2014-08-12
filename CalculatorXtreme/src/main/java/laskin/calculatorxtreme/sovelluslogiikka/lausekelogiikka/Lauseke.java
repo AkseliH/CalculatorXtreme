@@ -4,12 +4,12 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lohkopino implements Arvollinen {
+public class Lauseke implements Arvollinen {
     
     private SuoritusjononKasittelija paalohko;
     private List<SuoritusjononKasittelija> lohkot;
     
-    public Lohkopino() {
+    public Lauseke() {
         this.paalohko = new SuoritusjononKasittelija();
         this.lohkot = new ArrayList<SuoritusjononKasittelija>();
     }
