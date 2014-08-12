@@ -1,6 +1,4 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
-
 
 public class Suoritusjono implements Arvollinen {
     

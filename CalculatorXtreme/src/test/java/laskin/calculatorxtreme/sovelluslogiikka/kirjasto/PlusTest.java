@@ -1,6 +1,5 @@
 package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
-import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Plus;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
 import org.junit.After;
 import org.junit.AfterClass;

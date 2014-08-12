@@ -4,8 +4,6 @@ import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Sinifunktio;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Jakolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Plus;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

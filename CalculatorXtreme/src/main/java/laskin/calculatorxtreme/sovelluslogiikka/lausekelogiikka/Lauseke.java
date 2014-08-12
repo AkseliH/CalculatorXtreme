@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Lauseke implements Arvollinen {
     
-    private SuoritusjononKasittelija paalohko;
-    private List<SuoritusjononKasittelija> lohkot;
+    private Lohko paalohko;
+    private List<Lohko> lohkot;
     
     public Lauseke() {
-        this.paalohko = new SuoritusjononKasittelija();
-        this.lohkot = new ArrayList<SuoritusjononKasittelija>();
+        this.paalohko = new Lohko();
+        this.lohkot = new ArrayList<Lohko>();
     }
     
     public boolean onTyhja() {
@@ -19,13 +19,13 @@ public class Lauseke implements Arvollinen {
     }
     
     public void avaaUusiLohko() {
-        SuoritusjononKasittelija uusiLohko = new SuoritusjononKasittelija();
+        Lohko uusiLohko = new Lohko();
         this.nykyinenLohko().lisaaJonoonArvollinen(uusiLohko);
         
         lohkot.add(uusiLohko);
     }
     
-    public SuoritusjononKasittelija nykyinenLohko() {
+    public Lohko nykyinenLohko() {
         if (this.onTyhja()) {
             return paalohko;
         }
@@ -37,7 +37,7 @@ public class Lauseke implements Arvollinen {
     
     public void lisaaFunktioJaAvaaLohko(Funktio funktio) throws IllegalArgumentException {
         this.nykyinenLohko().lisaaJonoonArvollinen(funktio);
-        SuoritusjononKasittelija uusiLohko = new SuoritusjononKasittelija();
+        Lohko uusiLohko = new Lohko();
         funktio.setArgumentti(uusiLohko);
         
         lohkot.add(uusiLohko);

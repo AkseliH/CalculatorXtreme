@@ -2,8 +2,6 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Plus;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.SuoritusjononKasittelija;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,11 +9,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SuoritusjononKasittelijaTest {
+public class LohkoTest {
     
-    SuoritusjononKasittelija kasittelija;
-    
-    public SuoritusjononKasittelijaTest() {
+    Lohko kasittelija;
+    public LohkoTest() {
     }
     
     @BeforeClass
@@ -28,7 +25,7 @@ public class SuoritusjononKasittelijaTest {
     
     @Before
     public void setUp() {
-        kasittelija = new SuoritusjononKasittelija();
+        kasittelija = new Lohko();
     }
     
     @After

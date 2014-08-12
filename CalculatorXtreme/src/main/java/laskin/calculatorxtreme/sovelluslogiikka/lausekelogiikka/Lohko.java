@@ -1,14 +1,14 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
-public class SuoritusjononKasittelija implements Arvollinen {
+public class Lohko implements Arvollinen {
     
     private Suoritusjono jono;
     
-    public SuoritusjononKasittelija(Suoritusjono jono) {
+    public Lohko(Suoritusjono jono) {
         this.jono = jono;
     }
     
-    public SuoritusjononKasittelija() {
+    public Lohko() {
         this(new Suoritusjono());
     }
     
