@@ -16,3 +16,6 @@ rakentamalla sen itse luku/laskutoimitus kerrallaan. Ohjelma huolehtii laskujarj
 
 **11.8.2014** 2h 30 min: Merkkijonojen tulkinnan logiikan hahmottelemista. Perusrunko yksinkertaisten lausekkeiden
 konstruoimiseen merkkijonosta ohjelmoitu.
+
+**12.8.2014** 1h 30 min: Merkkijonojen tulkinnan logiikan ohjelmoimista, ensimmainen versio valmis. Hieman uudelleennimeamista.
+
