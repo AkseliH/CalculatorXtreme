@@ -45,7 +45,7 @@ public class MerkkijononKasittelija {
     }
     
     private boolean seuraavanaLuku() {
-        if (syote.substring(paikka, paikka + 1).matches("[0-9]")) {
+        if (syote.substring(paikka, paikka + 1).matches("[0-9|.]")) {
             return true;
         }
         

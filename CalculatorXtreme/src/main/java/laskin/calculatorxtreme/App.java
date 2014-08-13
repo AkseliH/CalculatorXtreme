@@ -1,9 +1,9 @@
 package laskin.calculatorxtreme;
 
 
-import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.*;
+import java.util.Scanner;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.*;
-import laskin.calculatorxtreme.sovelluslogiikka.MerkkijononKasittelija;
+import laskin.calculatorxtreme.kayttoliittyma.TekstiKayttoliittyma;
 
 public class App {
     
@@ -11,19 +11,13 @@ public class App {
         
         ToimintoKirjasto kirjasto = new ToimintoKirjasto();
         kirjasto.lisaaLaskutoimituksetJaFunktiot();
-        MerkkijononKasittelija kasittelija = new MerkkijononKasittelija(
-                "((12.5+3)*6.5+2)*2*3+sin(5)", kirjasto);
         
-        kasittelija.kasitteleLauseke();
-        System.out.println(kasittelija.getLauseke().arvo());
+        Scanner lukija = new Scanner(System.in);
         
-        MerkkijononKasittelija kasittelija2 = new MerkkijononKasittelija(
-                "3", kirjasto);
+        TekstiKayttoliittyma  kayttoliittyma 
+                = new TekstiKayttoliittyma(lukija, kirjasto);
         
-        kasittelija2.kasitteleLauseke();
-        System.out.println(kasittelija2.getLauseke().arvo());
-        
-        
-        
+        kayttoliittyma.kaynnista();
+    
     }
 }

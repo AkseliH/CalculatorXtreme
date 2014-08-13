@@ -19,3 +19,6 @@ konstruoimiseen merkkijonosta ohjelmoitu.
 
 **12.8.2014** 1h 30 min: Merkkijonojen tulkinnan logiikan ohjelmoimista, ensimmainen versio valmis. Hieman uudelleennimeamista.
 
+**13.8.2014** 3h: Sovelluslogiikan refaktorointia, sovelluslogiikan testien ohjelmoimista ja yksinkertaisen tekstipohjaisen
+kayttoliityman ohjelmoiminen.
+
