@@ -16,17 +16,58 @@ public class LuvunKasittelija {
         this.desimaalipisteLoydetty = false;
     }
     
+    public LuvunKasittelija() {
+        this(null, 0);
+    }
+    
+    public void setSyote(String syote) {
+        this.syote = syote;
+    }
+    
+    public void setPaikka(int paikka) {
+        this.paikka = paikka;
+    }
+    
     public Arvollinen lueLuku() 
             throws IllegalStateException, IllegalArgumentException {
         
         int aloituspaikka = paikka;
         
-        if (syote == null || !paikkaSisaltyySyotteeseen()
-                || !paikkaSisaltaaNumeron()) {
+        if (!lukeminenVoidaanAloittaa()) {
             throw new IllegalStateException();
         }
         
-        while (true) {
+        siirryLuvunLoppuun();
+        
+        Arvollinen luku = new Luku(Double.parseDouble(
+                syote.substring(aloituspaikka, paikka)));
+        
+        return luku;
+    
+    }
+    
+    private boolean lukeminenVoidaanAloittaa() {
+        if (syote == null) {
+            return false;
+        }
+        
+        if (!paikkaSisaltyySyotteeseen()) {
+            return false;
+        }
+        
+        if (paikkaSisaltaaNumeron() || paikkaSisaltaaDesimaalipisteen()) {
+            return true;
+        }
+        
+        if (kasitteleMiinus()) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private void siirryLuvunLoppuun() {
+         while (true) {
             
             if (!merkkiOsaLukua()) {
                 break;
@@ -34,12 +75,6 @@ public class LuvunKasittelija {
             
             paikka++;
         }
-        
-        Arvollinen luku = new Luku(Double.parseDouble(
-                syote.substring(aloituspaikka, paikka)));
-        
-        return luku;
-    
     }
     
     private boolean kasitteleDesimaalipiste() {        
@@ -73,6 +108,15 @@ public class LuvunKasittelija {
     
     private boolean paikkaSisaltaaDesimaalipisteen() {
         return syote.substring(paikka, paikka + 1).equals(".");
+    }
+    
+    private boolean kasitteleMiinus() {
+        if (syote.substring(paikka, paikka + 1).equals("-")) {
+            paikka++;
+            return true;
+        }
+        
+        return false;
     }
     
     private boolean paikkaSisaltyySyotteeseen() {

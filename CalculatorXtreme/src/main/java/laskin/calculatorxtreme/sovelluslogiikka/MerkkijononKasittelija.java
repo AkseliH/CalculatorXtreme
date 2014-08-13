@@ -17,28 +17,22 @@ public class MerkkijononKasittelija {
         this.paikka = 0;
     }
     
+    public MerkkijononKasittelija(ToimintoKirjasto kirjasto) {
+        this(null, kirjasto);
+    }
+    
+    public void setSyote(String syote) {
+        this.syote = syote;
+    }
+    
     private void kasitteleSeuraava() 
             throws IllegalStateException, IllegalArgumentException {
-        if (syote.substring(paikka, paikka + 1).matches("[0-9]")) {
-            LuvunKasittelija kasittelija = new LuvunKasittelija(syote, paikka);
-            lauseke.lisaaArvollinen(kasittelija.lueLuku());
-            
-            paikka = kasittelija.getPaikka();
-            
-        } else if (syote.substring(paikka, paikka + 1).matches("[+|*]")){
-            LaskutoimituksenKasittelija kasittelija = new LaskutoimituksenKasittelija(
-                    kirjasto, syote, lauseke, paikka);            
-            kasittelija.lueLaskutoimitus();
-            
-            paikka = kasittelija.getPaikka();
-            
-        } else if (syote.substring(paikka, paikka + 1).matches("[a-z]")) {
-            FunktionKasittelija kasittelija = new FunktionKasittelija(
-                    kirjasto, syote, lauseke, paikka);            
-            kasittelija.lueFunktio();
-            
-            paikka = kasittelija.getPaikka();
-            
+        if (seuraavanaLuku()) {
+            kasitteleLuku();            
+        } else if (seuraavanaLaskutoimitus()){
+            kasitteleLaskutoimitus();            
+        } else if (seuraavanaFunktio()) {
+            kasitteleFunktio();            
         } else if (syote.substring(paikka, paikka + 1).equals("(")) {
             lauseke.avaaUusiLohko();
             paikka++;
@@ -50,7 +44,29 @@ public class MerkkijononKasittelija {
         }
     }
     
-    public void kasitteleLauseke() {
+    private boolean seuraavanaLuku() {
+        if (syote.substring(paikka, paikka + 1).matches("[0-9]")) {
+            return true;
+        }
+        
+        if (syote.substring(paikka, paikka + 1).equals("-") 
+                && lauseke.nykyinenLohko().onTyhja()) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private boolean seuraavanaLaskutoimitus() {
+        return syote.substring(paikka, paikka + 1).matches("[+|*|/]");
+    }
+    
+    private boolean seuraavanaFunktio() {
+        return syote.substring(paikka, paikka + 1).matches("[a-z]");
+    }
+    
+    public void kasitteleLauseke() 
+            throws IllegalStateException, IllegalArgumentException {
         while (paikkaSisaltyySyotteeseen()) {
             kasitteleSeuraava();
         }
@@ -58,8 +74,28 @@ public class MerkkijononKasittelija {
         lauseke.suljeLohko();
     }
     
-    public Lauseke getLauseke() {
-        return lauseke;
+    private void kasitteleLuku() 
+            throws IllegalStateException, IllegalArgumentException {
+        LuvunKasittelija kasittelija = new LuvunKasittelija(syote, paikka);
+        lauseke.lisaaArvollinen(kasittelija.lueLuku());
+            
+        paikka = kasittelija.getPaikka();
+    }
+    
+    private void kasitteleLaskutoimitus() throws IllegalStateException {
+        LaskutoimituksenKasittelija kasittelija = new LaskutoimituksenKasittelija(
+                kirjasto, syote, lauseke, paikka);            
+        kasittelija.lueLaskutoimitus();
+            
+        paikka = kasittelija.getPaikka();
+    }
+    
+    private void kasitteleFunktio() throws IllegalStateException {
+        FunktionKasittelija kasittelija = new FunktionKasittelija(
+                kirjasto, syote, lauseke, paikka);            
+        kasittelija.lueFunktio();
+            
+        paikka = kasittelija.getPaikka();
     }
     
     private boolean paikkaSisaltyySyotteeseen() {
@@ -70,5 +106,8 @@ public class MerkkijononKasittelija {
         return false;
     }
     
+    public Lauseke getLauseke() {
+        return lauseke;
+    }
 
 }

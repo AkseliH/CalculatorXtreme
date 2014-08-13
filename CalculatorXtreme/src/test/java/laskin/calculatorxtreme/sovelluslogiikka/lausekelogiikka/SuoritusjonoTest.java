@@ -35,7 +35,7 @@ public class SuoritusjonoTest {
     
     @Test
     public void jonoTyhjaLuonninJalkeen() {
-        assertTrue(jono.onTyhja());
+        assertTrue(jono.eiSisallaLaskutoimituksia());
     }
     
     
@@ -53,7 +53,7 @@ public class SuoritusjonoTest {
     public void jonoEiTyhjaLaskutoimituksenLisayksenJalkeen() {
         jono.lisaaJonoonLaskutoimitus(new Plus());
         
-        assertFalse(jono.onTyhja());
+       assertFalse(jono.eiSisallaLaskutoimituksia());
     }
     
     @Test
@@ -79,9 +79,8 @@ public class SuoritusjonoTest {
     
     @Test
     public void lisaaLaskutoimitusLisaaEnsimmaisenLaskutoimituksen() {
-        jono.lisaaJonoonLaskutoimitus(new Plus());
-        
-        assertFalse(jono.onTyhja());
+        jono.lisaaJonoonLaskutoimitus(new Plus());   
+        assertFalse(jono.eiSisallaLaskutoimituksia());
     }
     
     @Test

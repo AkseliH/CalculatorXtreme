@@ -15,12 +15,16 @@ public class Suoritusjono implements Arvollinen {
         this(null);
     }
     
-    public boolean onTyhja() {
+    public boolean eiSisallaLaskutoimituksia() {
         if (ensimmainen == null) {
             return true;
         }
         
         return false;
+    }
+    
+    public boolean onTyhja() {
+        return eiSisallaLaskutoimituksia() && seuraavaArvollinen == null;
     }
     
     public Laskutoimitus getEnsimmainen() {
@@ -47,6 +51,7 @@ public class Suoritusjono implements Arvollinen {
         this.ensimmainen = ensimmainen;
         this.viimeinen = ensimmainen;
         ensimmainen.setEtujasen(seuraavaArvollinen);
+        seuraavaArvollinen = null;
     }
     
     public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) throws IllegalArgumentException, IllegalStateException {
@@ -58,7 +63,7 @@ public class Suoritusjono implements Arvollinen {
             throw new IllegalStateException();
         }
         
-        if (this.onTyhja()) {
+        if (this.eiSisallaLaskutoimituksia()) {
             this.asetaEnsimmainen(lisattava);
             return;
         }
@@ -71,16 +76,21 @@ public class Suoritusjono implements Arvollinen {
         viimeinen = lisattava;
     }
     
-    public void lisaaSeuraavaArvollinen(Arvollinen arvollinen) throws IllegalArgumentException {
+    public void lisaaSeuraavaArvollinen(Arvollinen arvollinen) 
+            throws IllegalArgumentException, IllegalStateException {
         if (arvollinen == null) {
             throw new IllegalArgumentException();
+        }
+        
+        if (seuraavaArvollinen != null) {
+            throw new IllegalStateException();
         }
         
         this.seuraavaArvollinen = arvollinen;
     }
     
     public void paataJono() throws IllegalStateException {
-        if (this.onTyhja()) {
+        if (this.eiSisallaLaskutoimituksia()) {
             return;
         }
         
@@ -93,7 +103,7 @@ public class Suoritusjono implements Arvollinen {
     }
     
     public int nykyinenPrioriteetti() {
-        if (this.onTyhja()) {
+        if (this.eiSisallaLaskutoimituksia()) {
             return 0;
         }
         
@@ -102,11 +112,11 @@ public class Suoritusjono implements Arvollinen {
 
     @Override
     public double arvo() throws IllegalStateException {
-        if (this.onTyhja() && seuraavaArvollinen == null) {
+        if (this.eiSisallaLaskutoimituksia() && seuraavaArvollinen == null) {
             throw new IllegalStateException();
         }
         
-        if (this.onTyhja()) {
+        if (this.eiSisallaLaskutoimituksia()) {
             return seuraavaArvollinen.arvo();
         }
         

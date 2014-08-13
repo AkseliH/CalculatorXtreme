@@ -71,13 +71,13 @@ public class LausekeTest {
     
     @Test
     public void alussaTyhja() {
-        assertTrue(lauseke.onTyhja());
+        assertTrue(lauseke.eiAvoimiaLohkoja());
     }
     
     @Test
     public void eiTyhjaLohkonAvaamisenJalkeen() {
         lauseke.avaaUusiLohko();
-        assertFalse(lauseke.onTyhja());
+        assertFalse(lauseke.eiAvoimiaLohkoja());
     }
     
     @Test

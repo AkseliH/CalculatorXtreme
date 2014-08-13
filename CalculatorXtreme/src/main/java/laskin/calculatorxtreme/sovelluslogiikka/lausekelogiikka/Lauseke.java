@@ -14,7 +14,7 @@ public class Lauseke implements Arvollinen {
         this.lohkot = new ArrayList<Lohko>();
     }
     
-    public boolean onTyhja() {
+    public boolean eiAvoimiaLohkoja() {
         return lohkot.isEmpty();
     }
     
@@ -26,7 +26,7 @@ public class Lauseke implements Arvollinen {
     }
     
     public Lohko nykyinenLohko() {
-        if (this.onTyhja()) {
+        if (this.eiAvoimiaLohkoja()) {
             return paalohko;
         }
         
@@ -55,7 +55,7 @@ public class Lauseke implements Arvollinen {
     public void suljeLohko() throws IllegalStateException {
         this.nykyinenLohko().paataJono();
         
-        if (!this.onTyhja()) {
+        if (!this.eiAvoimiaLohkoja()) {
             lohkot.remove(lohkot.size() - 1);
         }
         
@@ -65,10 +65,5 @@ public class Lauseke implements Arvollinen {
     public double arvo() throws IllegalStateException {
         return paalohko.arvo();
     }
-    
-    
-    
-    
-    
-    
+ 
 }

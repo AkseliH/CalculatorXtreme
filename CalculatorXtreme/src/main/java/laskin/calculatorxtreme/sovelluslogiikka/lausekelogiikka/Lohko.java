@@ -47,5 +47,8 @@ public class Lohko implements Arvollinen {
         return jono.arvo();
     }
     
-    
+    public boolean onTyhja() {
+        return jono.onTyhja();
+    }
+
 }

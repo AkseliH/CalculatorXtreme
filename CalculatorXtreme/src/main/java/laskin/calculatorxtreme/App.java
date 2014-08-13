@@ -17,6 +17,12 @@ public class App {
         kasittelija.kasitteleLauseke();
         System.out.println(kasittelija.getLauseke().arvo());
         
+        MerkkijononKasittelija kasittelija2 = new MerkkijononKasittelija(
+                "3", kirjasto);
+        
+        kasittelija2.kasitteleLauseke();
+        System.out.println(kasittelija2.getLauseke().arvo());
+        
         
         
     }

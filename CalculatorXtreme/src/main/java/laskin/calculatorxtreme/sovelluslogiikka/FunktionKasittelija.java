@@ -25,16 +25,8 @@ public class FunktionKasittelija {
             throw new IllegalStateException();
         }
         
-        int aloituspaikka = paikka;
-        
-        while (true) {
-            
-            if (!merkkiOsaTunnusta()) {
-                break;
-            }
-            
-            paikka++;
-        }
+        int aloituspaikka = paikka;        
+        siirryTunnuksenLoppuun();
         
         Funktio lisattava = kirjasto.haeFunktio(
                 syote.substring(aloituspaikka, paikka));
@@ -44,6 +36,17 @@ public class FunktionKasittelija {
         }
         
         lauseke.lisaaFunktioJaAvaaLohko(lisattava);
+    }
+    
+    private void siirryTunnuksenLoppuun() {
+        while (true) {
+            
+            if (!merkkiOsaTunnusta()) {
+                break;
+            }
+            
+            paikka++;
+        }
     }
     
     private boolean merkkiOsaTunnusta() {
@@ -68,19 +71,12 @@ public class FunktionKasittelija {
     }
     
     private boolean paikkaSisaltyySyotteeseen() {
-        if (paikka >= 0 && paikka < syote.length()) {
-            return true;
-        }
-        
-        return false;
+        return (paikka >= 0 && paikka < syote.length()) ;
+
     }
     
     private boolean paikkaSisaltaaSallitunMerkin() {
-        if (syote.substring(paikka, paikka + 1).toLowerCase().matches("[a-z]")) {
-            return true;
-        }
-        
-        return false;
+        return syote.substring(paikka, paikka + 1).matches("[a-z]");
     }
     
     public int getPaikka() {
