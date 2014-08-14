@@ -54,12 +54,11 @@ public class LaskutoimituksenKasittelija {
     
     private boolean paikkaSisaltaaSallitunMerkin() {
         
-        if (syote.substring(paikka, paikka + 1)
-                .matches("[+|*|/]")) {
+        if (syote.substring(paikka, paikka + 1).equals("-")) {
             return true;
         }
         
-        return false;
+        return syote.substring(paikka, paikka + 1).matches("[+|*|/]");
     }
     
     

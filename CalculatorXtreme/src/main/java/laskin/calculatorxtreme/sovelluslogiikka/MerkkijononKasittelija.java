@@ -57,8 +57,12 @@ public class MerkkijononKasittelija {
         return false;
     }
     
-    private boolean seuraavanaLaskutoimitus() {
-        return syote.substring(paikka, paikka + 1).matches("[+|*|/]");
+    private boolean seuraavanaLaskutoimitus() {        
+        if (syote.substring(paikka, paikka + 1).equals("-")) {
+            return true;
+        }
+        
+        return syote.substring(paikka, paikka + 1).matches("[+|*|/|]");
     }
     
     private boolean seuraavanaFunktio() {

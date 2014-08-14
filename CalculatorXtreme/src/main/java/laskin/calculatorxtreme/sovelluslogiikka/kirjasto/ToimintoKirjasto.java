@@ -29,6 +29,7 @@ public class ToimintoKirjasto {
         this.lisaaLaskutoimitusKirjastoon(new PlusTehdas());
         this.lisaaLaskutoimitusKirjastoon(new KertolaskuTehdas());
         this.lisaaLaskutoimitusKirjastoon(new JakolaskuTehdas());
+        this.lisaaLaskutoimitusKirjastoon(new MiinusTehdas());
         
         this.lisaaFunktioKirjastoon(new SinifunktioTehdas());
     }
