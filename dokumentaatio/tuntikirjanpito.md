@@ -22,3 +22,5 @@ konstruoimiseen merkkijonosta ohjelmoitu.
 **13.8.2014** 3h: Sovelluslogiikan refaktorointia, sovelluslogiikan testien ohjelmoimista ja yksinkertaisen tekstipohjaisen
 kayttoliityman ohjelmoiminen.
 
+**14.8.2014** 4h: Laskujarjestysongelman ratkaisuyrityksia, ja
+koodikatselmoinnin aloitus. Ei varsinaista edistymista.
