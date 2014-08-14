@@ -12,6 +12,7 @@ public class App {
     public static void main( String[] args ) {        
         
         //Jako- ja vahennyslaskun laskujarjestys vaara.
+        //Laskujarjestyksessa muitakin ongelmia.
         
         ToimintoKirjasto kirjasto = new ToimintoKirjasto();
         kirjasto.lisaaLaskutoimituksetJaFunktiot();
