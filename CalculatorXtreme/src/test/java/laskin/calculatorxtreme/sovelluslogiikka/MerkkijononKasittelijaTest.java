@@ -83,4 +83,5 @@ public class MerkkijononKasittelijaTest {
         kasittelija.kasitteleLauseke();
         assertEquals(16, kasittelija.getLauseke().arvo(), 0.00001);
     }
+
 }

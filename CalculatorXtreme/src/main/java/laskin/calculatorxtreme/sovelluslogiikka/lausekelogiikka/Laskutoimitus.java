@@ -5,9 +5,11 @@ public abstract class Laskutoimitus implements Arvollinen {
     private Arvollinen etujasen;
     private Arvollinen takajasen;
     private int prioriteetti;
+    private boolean samaPrioriteettiVasemmaltaOikealle;
     
-    public Laskutoimitus(int prioriteetti) {
+    public Laskutoimitus(int prioriteetti, boolean samaPrioriteettiVasemmaltaOikealle) {
         this.prioriteetti = prioriteetti;
+        this.samaPrioriteettiVasemmaltaOikealle = samaPrioriteettiVasemmaltaOikealle;
     }
     
     public void setEtujasen(Arvollinen etujasen) {
@@ -36,6 +38,10 @@ public abstract class Laskutoimitus implements Arvollinen {
     
     public int getPrioriteetti() {
         return prioriteetti;
+    }
+    
+    public boolean samaPrioriteettiVasemmaltaOikealle() {
+        return samaPrioriteettiVasemmaltaOikealle;
     }
     
     @Override

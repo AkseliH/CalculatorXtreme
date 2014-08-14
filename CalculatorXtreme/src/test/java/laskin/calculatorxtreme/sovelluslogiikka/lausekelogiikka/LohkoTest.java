@@ -2,6 +2,8 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Plus;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Miinus;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Jakolasku;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,7 +13,8 @@ import static org.junit.Assert.*;
 
 public class LohkoTest {
     
-    Lohko kasittelija;
+    Lohko lohko;
+    
     public LohkoTest() {
     }
     
@@ -25,7 +28,7 @@ public class LohkoTest {
     
     @Before
     public void setUp() {
-        kasittelija = new Lohko();
+        lohko = new Lohko();
     }
     
     @After
@@ -34,56 +37,72 @@ public class LohkoTest {
 
     @Test
     public void arvoOikeinPelkallaLuvulla() {
-        kasittelija.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonArvollinen(new Luku(2));
         
-        assertEquals(2, kasittelija.arvo(), 0.00001);
+        assertEquals(2, lohko.arvo(), 0.00001);
     }
     
     @Test
     public void arvoOikeinYhdellaLaskutoimituksella() {
-        kasittelija.lisaaJonoonArvollinen(new Luku(2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Plus());
-        kasittelija.lisaaJonoonArvollinen(new Luku(-2));
-        kasittelija.paataJono();
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(-2));
+        lohko.paataJono();
         
-        assertEquals(0, kasittelija.arvo(), 0.00001);
+        assertEquals(0, lohko.arvo(), 0.00001);
     }
     
     @Test
     public void arvoOikeinKunOikeaLaskujarjestysViimeisestaEnsimmaiseen() {
-        kasittelija.lisaaJonoonArvollinen(new Luku(2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Plus());
-        kasittelija.lisaaJonoonArvollinen(new Luku(-2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Kertolasku());
-        kasittelija.lisaaJonoonArvollinen(new Luku(5));
-        kasittelija.paataJono();
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(-2));
+        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaJonoonArvollinen(new Luku(5));
+        lohko.paataJono();
         
-        assertEquals(-8, kasittelija.arvo(), 0.00001);
+        assertEquals(-8, lohko.arvo(), 0.00001);
     }
     
     @Test
     public void arvoOikeinKunOikeaLaskujarjestysEnsimmaisestaViimeiseen() {
-        kasittelija.lisaaJonoonArvollinen(new Luku(2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Kertolasku());
-        kasittelija.lisaaJonoonArvollinen(new Luku(-2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Plus());
-        kasittelija.lisaaJonoonArvollinen(new Luku(5));
-        kasittelija.paataJono();
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaJonoonArvollinen(new Luku(-2));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(5));
+        lohko.paataJono();
         
-        assertEquals(1, kasittelija.arvo(), 0.00001);
+        assertEquals(1, lohko.arvo(), 0.00001);
     }
     
     @Test
     public void arvoOikeinKunOikeaLaskujarjestysVaihteleva() {
-        kasittelija.lisaaJonoonArvollinen(new Luku(2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Plus());
-        kasittelija.lisaaJonoonArvollinen(new Luku(-2));
-        kasittelija.lisaaJonoonLaskutoimitus(new Kertolasku());
-        kasittelija.lisaaJonoonArvollinen(new Luku(5));
-        kasittelija.lisaaJonoonLaskutoimitus(new Plus());
-        kasittelija.lisaaJonoonArvollinen(new Luku(3));
-        kasittelija.paataJono();
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(-2));
+        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaJonoonArvollinen(new Luku(5));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(3));
+        lohko.paataJono();
         
-        assertEquals(-5, kasittelija.arvo(), 0.00001);
+        assertEquals(-5, lohko.arvo(), 0.00001);
     }
+    
+//    @Test
+//    public void laskujarjestysOikeinPerakkaisillaMiinusLaskuilla() {
+//        lohko.lisaaJonoonArvollinen(new Luku(2));
+//        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+//        lohko.lisaaJonoonArvollinen(new Luku(-2));
+//        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+//        lohko.lisaaJonoonArvollinen(new Luku(5));
+//        lohko.lisaaJonoonLaskutoimitus(new Plus());
+//        lohko.lisaaJonoonArvollinen(new Luku(3));
+//        lohko.paataJono();
+//        
+//        assertEquals(2, lohko.arvo(), 0.00001);
+//    }
+    
+    
 }
