@@ -2,7 +2,6 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
 public class Suoritusjono implements Arvollinen {
     
-    private Laskutoimitus ensimmainen;
     private Laskutoimitus viimeinen;
     private Arvollinen seuraavaArvollinen;
     
@@ -16,7 +15,7 @@ public class Suoritusjono implements Arvollinen {
     }
     
     public boolean eiSisallaLaskutoimituksia() {
-        if (ensimmainen == null) {
+        if (viimeinen == null) {
             return true;
         }
         
@@ -25,10 +24,6 @@ public class Suoritusjono implements Arvollinen {
     
     public boolean onTyhja() {
         return eiSisallaLaskutoimituksia() && seuraavaArvollinen == null;
-    }
-    
-    public Laskutoimitus getEnsimmainen() {
-        return ensimmainen;
     }
     
     public Laskutoimitus getViimeinen() {
@@ -48,7 +43,6 @@ public class Suoritusjono implements Arvollinen {
             throw new IllegalStateException();
         }
         
-        this.ensimmainen = ensimmainen;
         this.viimeinen = ensimmainen;
         ensimmainen.setEtujasen(seuraavaArvollinen);
         seuraavaArvollinen = null;
@@ -68,11 +62,10 @@ public class Suoritusjono implements Arvollinen {
             return;
         }
         
-        
-        lisattava.setEtujasen(seuraavaArvollinen);
+        viimeinen.setTakajasen(seuraavaArvollinen);
         seuraavaArvollinen = null;
-        
-        viimeinen.setTakajasen(lisattava);
+        lisattava.setEtujasen(viimeinen);        
+
         viimeinen = lisattava;
     }
     
@@ -104,7 +97,7 @@ public class Suoritusjono implements Arvollinen {
     
     public int nykyinenPrioriteetti() {
         if (this.eiSisallaLaskutoimituksia()) {
-            return 0;
+            return 1;
         }
         
         return viimeinen.getPrioriteetti();
@@ -120,6 +113,6 @@ public class Suoritusjono implements Arvollinen {
             return seuraavaArvollinen.arvo();
         }
         
-        return ensimmainen.arvo();
+        return viimeinen.arvo();
     }
 }

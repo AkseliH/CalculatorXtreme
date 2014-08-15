@@ -56,12 +56,12 @@ public class SuoritusjonoTest {
        assertFalse(jono.eiSisallaLaskutoimituksia());
     }
     
-    @Test
-    public void asetaEnsimmainenAsettaaEnsimmaisen() {
-        jono.asetaEnsimmainen(new Plus());
-        
-        assertFalse(jono.getEnsimmainen() == null);
-    }
+//    @Test
+//    public void asetaEnsimmainenAsettaaEnsimmaisen() {
+//        jono.asetaEnsimmainen(new Plus());
+//        
+//        assertFalse(jono.getEnsimmainen() == null);
+//    }
     
     @Test
     public void asetaEnsimmainenAsettaaViimeisen() {
@@ -70,12 +70,12 @@ public class SuoritusjonoTest {
         assertFalse(jono.getViimeinen() == null);
     }
     
-    @Test
-    public void asetaEnsimmainenAsettaaEnsimmaiselleEtujasenen() {
-        jono.asetaEnsimmainen(new Plus());
-        
-        assertFalse(jono.getEnsimmainen().getEtujasen() == null);
-    }
+//    @Test
+//    public void asetaEnsimmainenAsettaaEnsimmaiselleEtujasenen() {
+//        jono.asetaEnsimmainen(new Plus());
+//        
+//        assertFalse(jono.getEnsimmainen().getEtujasen() == null);
+//    }
     
     @Test
     public void lisaaLaskutoimitusLisaaEnsimmaisenLaskutoimituksen() {
@@ -117,25 +117,25 @@ public class SuoritusjonoTest {
         assertEquals(2, jono.arvo(), 0.0001);
     }
     
-    @Test
-    public void toisenLaskutoimituksenLisayksenJalkeenEnsimmaisellaLaskettavatAsetettu() {
-        jono.lisaaJonoonLaskutoimitus(new Plus());
-        jono.lisaaSeuraavaArvollinen(new Luku(-4));
-        jono.lisaaJonoonLaskutoimitus(new Plus());
-        
-        assertTrue(jono.getEnsimmainen().laskettavatAsetettu());
-    }
+//    @Test
+//    public void toisenLaskutoimituksenLisayksenJalkeenEnsimmaisellaLaskettavatAsetettu() {
+//        jono.lisaaJonoonLaskutoimitus(new Plus());
+//        jono.lisaaSeuraavaArvollinen(new Luku(-4));
+//        jono.lisaaJonoonLaskutoimitus(new Plus());
+//        
+//        assertTrue(jono.getEnsimmainen().laskettavatAsetettu());
+//    }
     
-    @Test
-    public void laskeeLaskutoimituksetViimeisetaEnsimmaiseen() {
-        jono.lisaaJonoonLaskutoimitus(new Plus());
-        jono.lisaaSeuraavaArvollinen(new Luku(-4));
-        jono.lisaaJonoonLaskutoimitus(new Kertolasku());
-        jono.lisaaSeuraavaArvollinen(new Luku(5));
-        jono.paataJono();
-        
-        assertEquals(-19, jono.arvo(), 0.00001);
-    }
+//    @Test
+//    public void laskeeLaskutoimituksetViimeisetaEnsimmaiseen() {
+//        jono.lisaaJonoonLaskutoimitus(new Plus());
+//        jono.lisaaSeuraavaArvollinen(new Luku(-4));
+//        jono.lisaaJonoonLaskutoimitus(new Kertolasku());
+//        jono.lisaaSeuraavaArvollinen(new Luku(5));
+//        jono.paataJono();
+//        
+//        assertEquals(-19, jono.arvo(), 0.00001);
+//    }
 
     
 }

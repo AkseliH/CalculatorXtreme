@@ -1,11 +1,18 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Lohko implements Arvollinen {
     
-    private Suoritusjono jono;
+    private Suoritusjono alintaso;
+    private List<Suoritusjono> suoritustasot;
+    private Arvollinen seuraavaArvollinen;
     
     public Lohko(Suoritusjono jono) {
-        this.jono = jono;
+        this.alintaso = jono;
+        this.suoritustasot = new ArrayList<Suoritusjono>();
+        this.seuraavaArvollinen = null;
     }
     
     public Lohko() {
@@ -13,42 +20,87 @@ public class Lohko implements Arvollinen {
     }
     
     public void setJono(Suoritusjono jono) {
-        this.jono = jono;
+        this.alintaso = jono;
     }
     
     public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) 
             throws IllegalArgumentException, IllegalStateException {
-       if (lisattava == null) {
+       if (lisattava == null || seuraavaArvollinen == null) {
            throw new IllegalArgumentException();
        }
+       
+       if (nykyinenJono().eiSisallaLaskutoimituksia()) {
+           asetaJonoonArvollinen();
+           nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
+           return;
+       }
                
-       if (lisattava.getPrioriteetti() < jono.nykyinenPrioriteetti()) {                      
-           jono.paataJono();
-           jono = new Suoritusjono(jono);
-           jono.asetaEnsimmainen(lisattava);
+       if (lisattava.getPrioriteetti() > nykyinenJono().nykyinenPrioriteetti()) {                      
+           Suoritusjono uusitaso = new Suoritusjono();           
+           nykyinenJono().lisaaSeuraavaArvollinen(uusitaso);
+           suoritustasot.add(uusitaso);
+           asetaJonoonArvollinen();
+           nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
+           
+       } else if (lisattava.getPrioriteetti() == nykyinenJono().nykyinenPrioriteetti()) {
+           asetaJonoonArvollinen();
+           nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
+       
        } else {
-           jono.lisaaJonoonLaskutoimitus(lisattava);
+           asetaJonoonArvollinen();
+           while (nykyinenJono().nykyinenPrioriteetti() > lisattava.getPrioriteetti()
+                   && !suoritustasot.isEmpty()) {
+               
+               paataNykyinen();
+               suoritustasot.remove(suoritustasot.size() - 1);
+           }
+           nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
+   
        }
     }
     
+    private Suoritusjono nykyinenJono() {
+        if (suoritustasot.isEmpty()) {
+            return alintaso;
+        }
+        
+        return suoritustasot.get(suoritustasot.size() - 1);
+    }
+       
+    
     public void lisaaJonoonArvollinen(Arvollinen lisattava) throws IllegalArgumentException {
-        jono.lisaaSeuraavaArvollinen(lisattava);
+        this.seuraavaArvollinen = lisattava;
+    }
+    
+    public void asetaJonoonArvollinen() {
+        nykyinenJono().lisaaSeuraavaArvollinen(seuraavaArvollinen);
+        this.seuraavaArvollinen = null;
     }
     
     public void paataJono() throws IllegalStateException {
-        jono.paataJono();
+        asetaJonoonArvollinen();
+        while (!suoritustasot.isEmpty()) {
+            paataNykyinen();
+            suoritustasot.remove(suoritustasot.size() - 1);
+        }
+        paataNykyinen();
+        
+    }
+    
+    public void paataNykyinen() {
+        nykyinenJono().paataJono();
     }
 
     @Override
     public double arvo() throws IllegalStateException {
-        if (jono == null) {
+        if (alintaso == null) {
             throw new IllegalStateException();
         }
-        return jono.arvo();
+        return alintaso.arvo();
     }
     
     public boolean onTyhja() {
-        return jono.onTyhja();
+        return alintaso.onTyhja() && seuraavaArvollinen == null;
     }
 
 }

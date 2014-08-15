@@ -24,3 +24,7 @@ kayttoliityman ohjelmoiminen.
 
 **14.8.2014** 4h: Laskujarjestysongelman ratkaisuyrityksia, ja
 koodikatselmoinnin aloitus. Ei varsinaista edistymista.
+
+**15.8.2014** 5h: Koodikatselmointi ja laskujarjestysongelman korjausta.
+
+

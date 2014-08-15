@@ -38,6 +38,7 @@ public class LohkoTest {
     @Test
     public void arvoOikeinPelkallaLuvulla() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.paataJono();
         
         assertEquals(2, lohko.arvo(), 0.00001);
     }
