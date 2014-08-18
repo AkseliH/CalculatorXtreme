@@ -58,7 +58,7 @@ public class LaskutoimituksenKasittelija {
             return true;
         }
         
-        return syote.substring(paikka, paikka + 1).matches("[+|*|/]");
+        return syote.substring(paikka, paikka + 1).matches("[+|*|/|']");
     }
     
     

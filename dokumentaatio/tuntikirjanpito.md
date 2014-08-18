@@ -27,4 +27,4 @@ koodikatselmoinnin aloitus. Ei varsinaista edistymista.
 
 **15.8.2014** 5h: Koodikatselmointi ja laskujarjestysongelman korjausta.
 
-
+**18.8.2014** 1h: Potenssiinkorotus lisatty, pienta hienosaatoa ja refaktoroinnin suunnittelua.

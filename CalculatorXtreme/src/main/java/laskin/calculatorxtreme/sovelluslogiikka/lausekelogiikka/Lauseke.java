@@ -53,7 +53,7 @@ public class Lauseke implements Arvollinen {
     }
     
     public void suljeLohko() throws IllegalStateException {
-        this.nykyinenLohko().paataJono();
+        this.nykyinenLohko().paataLohko();
         
         if (!this.eiAvoimiaLohkoja()) {
             lohkot.remove(lohkot.size() - 1);

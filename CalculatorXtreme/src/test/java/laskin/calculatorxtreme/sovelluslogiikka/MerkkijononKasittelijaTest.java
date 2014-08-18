@@ -71,6 +71,13 @@ public class MerkkijononKasittelijaTest {
     }
     
     @Test
+    public void negatiivisetJaMiinuksetYhdessaOikein() {
+        kasittelija.setSyote("-5-3-6-(-2)");
+        kasittelija.kasitteleLauseke();
+        assertEquals(-12, kasittelija.getLauseke().arvo(), 0.00001);
+    }
+    
+    @Test
     public void funktiotOikein() {
         kasittelija.setSyote("sin(-2+2)*3+sin(sin(0))");
         kasittelija.kasitteleLauseke();

@@ -19,10 +19,6 @@ public class Lohko implements Arvollinen {
         this(new Suoritusjono());
     }
     
-    public void setJono(Suoritusjono jono) {
-        this.alintaso = jono;
-    }
-    
     public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) 
             throws IllegalArgumentException, IllegalStateException {
        if (lisattava == null || seuraavaArvollinen == null) {
@@ -68,16 +64,29 @@ public class Lohko implements Arvollinen {
     }
        
     
-    public void lisaaJonoonArvollinen(Arvollinen lisattava) throws IllegalArgumentException {
+    public void lisaaJonoonArvollinen(Arvollinen lisattava) 
+            throws IllegalArgumentException, IllegalStateException {
+        if (lisattava == null) {
+            throw new IllegalArgumentException();
+        }
+        
+        if (seuraavaArvollinen != null) {
+            throw new IllegalStateException();
+        }
+        
         this.seuraavaArvollinen = lisattava;
     }
     
-    public void asetaJonoonArvollinen() {
+    public void asetaJonoonArvollinen() throws IllegalStateException {
+        if (seuraavaArvollinen == null) {
+            throw new IllegalStateException();
+        }
+        
         nykyinenJono().lisaaSeuraavaArvollinen(seuraavaArvollinen);
         this.seuraavaArvollinen = null;
     }
     
-    public void paataJono() throws IllegalStateException {
+    public void paataLohko() throws IllegalStateException {
         asetaJonoonArvollinen();
         while (!suoritustasot.isEmpty()) {
             paataNykyinen();

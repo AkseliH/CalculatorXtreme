@@ -97,7 +97,7 @@ public class Suoritusjono implements Arvollinen {
     
     public int nykyinenPrioriteetti() {
         if (this.eiSisallaLaskutoimituksia()) {
-            return 1;
+            return 0;
         }
         
         return viimeinen.getPrioriteetti();

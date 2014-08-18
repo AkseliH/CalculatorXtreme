@@ -62,7 +62,7 @@ public class MerkkijononKasittelija {
             return true;
         }
         
-        return syote.substring(paikka, paikka + 1).matches("[+|*|/|]");
+        return syote.substring(paikka, paikka + 1).matches("[+|*|/|']");
     }
     
     private boolean seuraavanaFunktio() {

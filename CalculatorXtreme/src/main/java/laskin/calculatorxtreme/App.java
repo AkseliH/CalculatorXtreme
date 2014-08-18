@@ -9,10 +9,7 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
 
 public class App {
     
-    public static void main( String[] args ) {        
-        
-        //Jako- ja vahennyslaskun laskujarjestys vaara.
-        //Laskujarjestyksessa muitakin ongelmia.
+    public static void main( String[] args ) {                
         
         ToimintoKirjasto kirjasto = new ToimintoKirjasto();
         kirjasto.lisaaLaskutoimituksetJaFunktiot();

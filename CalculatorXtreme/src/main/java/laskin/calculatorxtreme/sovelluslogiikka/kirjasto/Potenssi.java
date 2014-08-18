@@ -2,10 +2,10 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 
-public class Miinus extends Laskutoimitus {
+public class Potenssi extends Laskutoimitus {
     
-    public Miinus() {
-        super(1);
+    public Potenssi() {
+        super(3);
     }
 
     @Override
@@ -14,8 +14,6 @@ public class Miinus extends Laskutoimitus {
             throw new IllegalStateException();
         }
         
-        return super.getEtujasen().arvo() - super.getTakajasen().arvo();
+        return Math.pow(super.getEtujasen().arvo(), super.getTakajasen().arvo());
     }
-    
-    
 }

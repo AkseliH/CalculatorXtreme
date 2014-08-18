@@ -38,7 +38,7 @@ public class LohkoTest {
     @Test
     public void arvoOikeinPelkallaLuvulla() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.paataJono();
+        lohko.paataLohko();
         
         assertEquals(2, lohko.arvo(), 0.00001);
     }
@@ -48,7 +48,7 @@ public class LohkoTest {
         lohko.lisaaJonoonArvollinen(new Luku(2));
         lohko.lisaaJonoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(-2));
-        lohko.paataJono();
+        lohko.paataLohko();
         
         assertEquals(0, lohko.arvo(), 0.00001);
     }
@@ -60,7 +60,7 @@ public class LohkoTest {
         lohko.lisaaJonoonArvollinen(new Luku(-2));
         lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
         lohko.lisaaJonoonArvollinen(new Luku(5));
-        lohko.paataJono();
+        lohko.paataLohko();
         
         assertEquals(-8, lohko.arvo(), 0.00001);
     }
@@ -72,7 +72,7 @@ public class LohkoTest {
         lohko.lisaaJonoonArvollinen(new Luku(-2));
         lohko.lisaaJonoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(5));
-        lohko.paataJono();
+        lohko.paataLohko();
         
         assertEquals(1, lohko.arvo(), 0.00001);
     }
@@ -86,24 +86,24 @@ public class LohkoTest {
         lohko.lisaaJonoonArvollinen(new Luku(5));
         lohko.lisaaJonoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(3));
-        lohko.paataJono();
+        lohko.paataLohko();
         
         assertEquals(-5, lohko.arvo(), 0.00001);
     }
     
-//    @Test
-//    public void laskujarjestysOikeinPerakkaisillaMiinusLaskuilla() {
-//        lohko.lisaaJonoonArvollinen(new Luku(2));
-//        lohko.lisaaJonoonLaskutoimitus(new Miinus());
-//        lohko.lisaaJonoonArvollinen(new Luku(-2));
-//        lohko.lisaaJonoonLaskutoimitus(new Miinus());
-//        lohko.lisaaJonoonArvollinen(new Luku(5));
-//        lohko.lisaaJonoonLaskutoimitus(new Plus());
-//        lohko.lisaaJonoonArvollinen(new Luku(3));
-//        lohko.paataJono();
-//        
-//        assertEquals(2, lohko.arvo(), 0.00001);
-//    }
+    @Test
+    public void laskujarjestysOikeinPerakkaisillaMiinusLaskuilla() {
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+        lohko.lisaaJonoonArvollinen(new Luku(-2));
+        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+        lohko.lisaaJonoonArvollinen(new Luku(5));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(3));
+        lohko.paataLohko();
+        
+        assertEquals(2, lohko.arvo(), 0.00001);
+    }
     
     
 }

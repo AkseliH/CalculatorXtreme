@@ -5,7 +5,7 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 public class Kertolasku extends Laskutoimitus {
     
     public Kertolasku() {
-        super(2, true);
+        super(2);
     }    
 
     @Override

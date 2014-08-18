@@ -5,7 +5,7 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 public class Plus extends Laskutoimitus {
     
     public Plus() {
-        super(1, true);
+        super(1);
     }
     
     @Override
