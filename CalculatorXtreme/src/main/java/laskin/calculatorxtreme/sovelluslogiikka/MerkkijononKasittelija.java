@@ -113,5 +113,9 @@ public class MerkkijononKasittelija {
     public Lauseke getLauseke() {
         return lauseke;
     }
+    
+    public double arvo() {
+        return lauseke.arvo();
+    }
 
 }

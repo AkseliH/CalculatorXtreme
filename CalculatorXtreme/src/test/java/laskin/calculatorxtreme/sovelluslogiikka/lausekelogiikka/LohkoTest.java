@@ -4,6 +4,7 @@ import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Plus;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Miinus;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Jakolasku;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Potenssi;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -103,6 +104,24 @@ public class LohkoTest {
         lohko.paataLohko();
         
         assertEquals(2, lohko.arvo(), 0.00001);
+    }
+    
+    @Test
+    public void monimutkainenLaskujarjestysOikein() {
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Potenssi());
+        lohko.lisaaJonoonArvollinen(new Luku(-2));
+        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+        lohko.lisaaJonoonArvollinen(new Luku(6));
+        lohko.lisaaJonoonLaskutoimitus(new Jakolasku());
+        lohko.lisaaJonoonArvollinen(new Luku(3));
+        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(3));
+        lohko.paataLohko();
+        
+        assertEquals(-0.75, lohko.arvo(), 0.00001);
     }
     
     
