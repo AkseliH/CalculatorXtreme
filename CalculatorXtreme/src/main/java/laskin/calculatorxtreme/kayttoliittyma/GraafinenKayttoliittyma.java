@@ -40,6 +40,7 @@ public class GraafinenKayttoliittyma implements Runnable {
         container.setLayout(asettelu);
         
         JTextField tulostekentta = new JTextField();
+        tulostekentta.setEditable(false);
         GridBagConstraints saadot1 = new GridBagConstraints();
         saadot1.weightx = 1.0;
         saadot1.weighty = 0.5;
@@ -61,7 +62,7 @@ public class GraafinenKayttoliittyma implements Runnable {
         
         JPanel kenttienNappaimisto = luoKenttienNappaimisto(syotekentta, tulostekentta);
         GridBagConstraints saadot5 = new GridBagConstraints();
-        saadot5.weightx = 1.0;
+        saadot5.weightx = 0.5;
         saadot5.weighty = 1.0;
         saadot5.fill = GridBagConstraints.BOTH;
         saadot5.gridheight = 2;

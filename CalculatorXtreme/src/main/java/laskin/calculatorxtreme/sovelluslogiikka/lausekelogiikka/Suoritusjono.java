@@ -44,7 +44,7 @@ public class Suoritusjono implements Arvollinen {
         }
         
         this.viimeinen = ensimmainen;
-        ensimmainen.setEtujasen(seuraavaArvollinen);
+        viimeinen.setEtujasen(seuraavaArvollinen);
         seuraavaArvollinen = null;
     }
     

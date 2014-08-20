@@ -36,9 +36,9 @@ public class Lauseke implements Arvollinen {
     
     
     public void lisaaFunktioJaAvaaLohko(Funktio funktio) throws IllegalArgumentException {
-        this.nykyinenLohko().lisaaJonoonArvollinen(funktio);
         Lohko uusiLohko = new Lohko();
         funktio.setArgumentti(uusiLohko);
+        this.nykyinenLohko().lisaaJonoonArvollinen(funktio);
         
         lohkot.add(uusiLohko);
         

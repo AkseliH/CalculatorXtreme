@@ -31,3 +31,5 @@ koodikatselmoinnin aloitus. Ei varsinaista edistymista.
 
 **19.8.2014** 4h: Graafisen kayttoliittyman ohjelmointia.
 
+**20.8.2014** 2h 30min: Refaktorointia.
+

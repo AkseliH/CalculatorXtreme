@@ -9,14 +9,9 @@ public class Lohko implements Arvollinen {
     private List<Suoritusjono> suoritustasot;
     private Arvollinen seuraavaArvollinen;
     
-    public Lohko(Suoritusjono jono) {
-        this.alintaso = jono;
-        this.suoritustasot = new ArrayList<Suoritusjono>();
-        this.seuraavaArvollinen = null;
-    }
-    
     public Lohko() {
-        this(new Suoritusjono());
+        this.alintaso = new Suoritusjono();
+        this.suoritustasot = new ArrayList<Suoritusjono>();
     }
     
     public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) 
@@ -25,34 +20,37 @@ public class Lohko implements Arvollinen {
            throw new IllegalArgumentException();
        }
        
-       if (nykyinenJono().eiSisallaLaskutoimituksia()) {
+       if (nykyinenJono().onTyhja()) {
            asetaJonoonArvollinen();
            nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
            return;
        }
                
        if (lisattava.getPrioriteetti() > nykyinenJono().nykyinenPrioriteetti()) {                      
-           Suoritusjono uusitaso = new Suoritusjono();           
-           nykyinenJono().lisaaSeuraavaArvollinen(uusitaso);
-           suoritustasot.add(uusitaso);
-           asetaJonoonArvollinen();
-           nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
-           
-       } else if (lisattava.getPrioriteetti() == nykyinenJono().nykyinenPrioriteetti()) {
-           asetaJonoonArvollinen();
-           nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
-       
+           lisaaSuurempiPrioriteetti(lisattava);
        } else {
-           asetaJonoonArvollinen();
-           while (nykyinenJono().nykyinenPrioriteetti() > lisattava.getPrioriteetti()
-                   && !suoritustasot.isEmpty()) {
-               
-               paataNykyinen();
-               suoritustasot.remove(suoritustasot.size() - 1);
-           }
-           nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
-   
+           lisaaPienempiTaiYhtasuuriPrioriteetti(lisattava);
        }
+    }
+    
+    private void lisaaSuurempiPrioriteetti(Laskutoimitus lisattava) {
+        Suoritusjono uusitaso = new Suoritusjono();           
+        nykyinenJono().lisaaSeuraavaArvollinen(uusitaso);
+        suoritustasot.add(uusitaso);
+        asetaJonoonArvollinen();
+        nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
+    }
+    
+    private void lisaaPienempiTaiYhtasuuriPrioriteetti(Laskutoimitus lisattava) {
+        asetaJonoonArvollinen();
+        
+        while (nykyinenJono().nykyinenPrioriteetti() > lisattava.getPrioriteetti()
+                && !suoritustasot.isEmpty()) {              
+            paataNykyinen();
+            suoritustasot.remove(suoritustasot.size() - 1);
+        }
+        
+        nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
     }
     
     private Suoritusjono nykyinenJono() {
@@ -93,7 +91,6 @@ public class Lohko implements Arvollinen {
             suoritustasot.remove(suoritustasot.size() - 1);
         }
         paataNykyinen();
-        
     }
     
     public void paataNykyinen() {
