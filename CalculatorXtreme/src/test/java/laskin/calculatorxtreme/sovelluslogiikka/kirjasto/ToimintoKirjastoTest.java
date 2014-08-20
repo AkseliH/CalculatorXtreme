@@ -34,15 +34,22 @@ public class ToimintoKirjastoTest {
     }
     
     @Test
-    public void aluksiHakuPalauttaaNull() {
-        assertTrue(kirjasto.haeLaskutoimitus("plus") == null);
+    public void olemattomallaLaskutoimituksellaHakuPalauttaaNull() {
+        assertTrue(kirjasto.haeLaskutoimitus("olematon") == null);
+    }
+    
+    @Test
+    public void oikeallaLaskutoimituksellaHakuEiPalautaNull() {
+        assertFalse(kirjasto.haeLaskutoimitus("+") == null);
     }
 
     @Test
-    public void lisayksenJalkeenHakuEiPalautaNull() {
-        kirjasto.lisaaLaskutoimitusKirjastoon(new PlusTehdas());
-        
-        assertFalse(kirjasto.haeLaskutoimitus("+") == null);
+    public void olemattomallaFunktiollaHakuPalauttaaNull() {
+        assertTrue(kirjasto.haeFunktio("olematon") == null);
     }
-        
+    
+    @Test
+    public void oikeallaFunktiollaHakuEiPalautaNull() {
+        assertFalse(kirjasto.haeFunktio("sin") == null);
+    }
 }

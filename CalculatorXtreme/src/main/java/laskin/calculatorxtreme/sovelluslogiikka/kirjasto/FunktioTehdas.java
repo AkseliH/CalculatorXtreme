@@ -2,17 +2,12 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
-public abstract class FunktioTehdas {
+public class FunktioTehdas {
     
-    private String tunnus;
-    
-    public FunktioTehdas(String tunnus) {
-        this.tunnus = tunnus;
+    public Funktio hae(String tunnus) {
+        if (tunnus.equals("sin")) { return new Sinifunktio(); }
+        if (tunnus.equals("cos")) { return new Kosinifunktio(); }
+        
+        return null;
     }
-    
-    public String getTunnus() {
-        return tunnus;
-    }
-    
-    public abstract Funktio luo();
 }

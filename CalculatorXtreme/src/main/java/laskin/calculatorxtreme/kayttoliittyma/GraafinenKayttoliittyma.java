@@ -145,6 +145,14 @@ public class GraafinenKayttoliittyma implements Runnable {
         nappain0.addActionListener(new NappaimenKirjoittaja("0", syotekentta));
         nappaimisto.add(nappain0);
         
+        JButton nappainSulkuAuki = new JButton("(");
+        nappainSulkuAuki.addActionListener(new NappaimenKirjoittaja("(", syotekentta));
+        nappaimisto.add(nappainSulkuAuki);
+        
+        JButton nappainSulkuKiinni = new JButton(")");
+        nappainSulkuKiinni.addActionListener(new NappaimenKirjoittaja(")", syotekentta));
+        nappaimisto.add(nappainSulkuKiinni);
+        
         return nappaimisto;
     }
     
@@ -179,6 +187,7 @@ public class GraafinenKayttoliittyma implements Runnable {
         JPanel nappaimisto = new JPanel(new GridLayout(3,1));
         
         JButton nappainDel = new JButton("DEL");
+        nappainDel.addActionListener(new ViimeisenMerkinPoistaja(syotekentta));
         nappaimisto.add(nappainDel);
         
         JButton nappainC = new JButton("C");
@@ -202,6 +211,7 @@ public class GraafinenKayttoliittyma implements Runnable {
         nappaimisto.add(nappainSin);
         
         JButton nappainCos = new JButton("cos");
+        nappainCos.addActionListener(new NappaimenKirjoittaja("cos(", syotekentta));
         nappaimisto.add(nappainCos);
         
         return nappaimisto;

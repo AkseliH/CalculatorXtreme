@@ -26,7 +26,6 @@ public class MerkkijononKasittelijaTest {
     @Before
     public void setUp() {
         ToimintoKirjasto kirjasto = new ToimintoKirjasto();
-        kirjasto.lisaaLaskutoimituksetJaFunktiot();
         
         kasittelija = new MerkkijononKasittelija(kirjasto);
     }

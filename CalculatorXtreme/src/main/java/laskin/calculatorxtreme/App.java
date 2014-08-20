@@ -14,7 +14,6 @@ public class App {
     public static void main( String[] args ) {                
         
         ToimintoKirjasto kirjasto = new ToimintoKirjasto();
-        kirjasto.lisaaLaskutoimituksetJaFunktiot();
         
 //        Scanner lukija = new Scanner(System.in);
 //        
