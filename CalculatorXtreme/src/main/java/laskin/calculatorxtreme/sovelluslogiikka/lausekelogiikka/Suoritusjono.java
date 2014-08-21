@@ -40,6 +40,14 @@ public class Suoritusjono implements Arvollinen {
         return seuraavaArvollinen;
     }
     
+    /**
+     * Lisaa jonoon ensimmaisen laskutoimituksen.
+     * 
+     * @param ensimmainen Lisattava laskutoimitus.
+     * @throws IllegalArgumentException Lisattava ei saa olla null.
+     * @throws IllegalStateException  Ensimmaista ei voida lisata, jos 
+     * ensin ei ole lisatty arvollista.
+     */
     public void asetaEnsimmainen(Laskutoimitus ensimmainen) throws IllegalArgumentException, IllegalStateException {
         if (ensimmainen == null) {
             throw new IllegalArgumentException();
@@ -54,6 +62,14 @@ public class Suoritusjono implements Arvollinen {
         seuraavaArvollinen = null;
     }
     
+    /**
+     * Lisaa jonoon laskutoimituksen linkittaen laskutoimitukset oikein.
+     * 
+     * @param lisattava Lisattava laskutoimitus.
+     * @throws IllegalArgumentException Lisattava ei saa olla null.
+     * @throws IllegalStateException Laskutoimitusta ei voida lisata, jos 
+     * edellisen laskutoimituksen jalkeen ei ole lisatty arvollista.
+     */
     public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) throws IllegalArgumentException, IllegalStateException {
         if (lisattava == null) {
             throw new IllegalArgumentException();
@@ -75,6 +91,13 @@ public class Suoritusjono implements Arvollinen {
         viimeinen = lisattava;
     }
     
+    /**
+     * Lisaa jonon muistiin arvollisen.
+     * 
+     * @param arvollinen Lisattava arvollinen.
+     * @throws IllegalArgumentException Lisattava ei saa olla null.
+     * @throws IllegalStateException Muistin tulee olla tyhja ennen lisaysta.
+     */
     public void lisaaSeuraavaArvollinen(Arvollinen arvollinen) 
             throws IllegalArgumentException, IllegalStateException {
         if (arvollinen == null) {
@@ -88,22 +111,36 @@ public class Suoritusjono implements Arvollinen {
         this.seuraavaArvollinen = arvollinen;
     }
     
+    /**
+     * Asettaa viimeiselle laskutoimitukselle takajasenen ellei jono
+     * ole tyhja. Kutsun jalkeen jonon metodia arvo voidaan kutsua. Kutsun
+     * jalkeen jonon tilaa muuttavia metodeja ei tule kutsua.
+     * 
+     * @throws IllegalStateException Muistissa taytyy olla arvollinen.
+     */
     public void paataJono() throws IllegalStateException {
-        if (this.eiSisallaLaskutoimituksia()) {
-            return;
-        }
-        
         if (seuraavaArvollinen == null) {
             throw new IllegalStateException();
+        }
+        
+        if (this.eiSisallaLaskutoimituksia()) {
+            return;
         }
         
         viimeinen.setTakajasen(seuraavaArvollinen);
         seuraavaArvollinen = null;
     }
 
+    /**
+     * Palauttaa jonon arvon. Ennen metodin kayttoa metodia paataJono()
+     * tulee olla kutsuttu kerran.
+     * 
+     * @return Jonon arvo laskettaessa laskutoimitukset ensimmaisesta viimeiseen.
+     * @throws IllegalStateException 
+     */
     @Override
     public double arvo() throws IllegalStateException {
-        if (this.eiSisallaLaskutoimituksia() && seuraavaArvollinen == null) {
+        if (onTyhja()) {
             throw new IllegalStateException();
         }
         
