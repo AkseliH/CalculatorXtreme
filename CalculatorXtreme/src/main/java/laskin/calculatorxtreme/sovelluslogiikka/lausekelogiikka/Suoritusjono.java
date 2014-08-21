@@ -94,14 +94,6 @@ public class Suoritusjono implements Arvollinen {
         viimeinen.setTakajasen(seuraavaArvollinen);
         seuraavaArvollinen = null;
     }
-    
-    public int nykyinenPrioriteetti() {
-        if (this.eiSisallaLaskutoimituksia()) {
-            return 0;
-        }
-        
-        return viimeinen.getPrioriteetti();
-    }
 
     @Override
     public double arvo() throws IllegalStateException {
