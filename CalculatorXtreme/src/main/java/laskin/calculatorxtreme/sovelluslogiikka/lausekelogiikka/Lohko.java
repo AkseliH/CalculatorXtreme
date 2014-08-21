@@ -35,6 +35,12 @@ public class Lohko implements Arvollinen {
        }
     }
     
+    /**
+     * Avaa uusia suoritustasoja kunnes suoritustasoja on yhta monta kuin
+     * parametrina annettu prioriteetti.
+     * 
+     * @param prioriteetti Taso, jolle noustaan.
+     */
     private void siirryKorkeammalleSuoritustasolle(int prioriteetti) {
         while (suoritustasot.size() < prioriteetti) {
             Suoritusjono uusitaso = new Suoritusjono();
@@ -43,6 +49,12 @@ public class Lohko implements Arvollinen {
         }
     }
     
+    /**
+     * Sulkee suoritustasoja kunnes uoritustasoja on yhta monta kuin
+     * parametrina annettu prioriteetti.
+     * 
+     * @param prioriteetti Taso, jolle lasketaan.
+     */
     private void siirryAlemmalleSuoritustasolle(int prioriteetti) {
         asetaJonoonArvollinen();
         while (suoritustasot.size() > prioriteetti) {            
@@ -51,6 +63,12 @@ public class Lohko implements Arvollinen {
         }
     }
     
+    /**
+     * Lisaa suoritusrakenteeseen laskutoimituksen, jonka prioriteetti
+     * on suurempi kuin lohkon nykyinen suoritustaso.
+     * 
+     * @param lisattava Lisattava laskutoimitus.
+     */
     private void lisaaSuurempiPrioriteetti(Laskutoimitus lisattava) {
         siirryKorkeammalleSuoritustasolle(lisattava.getPrioriteetti());
         asetaJonoonArvollinen();
