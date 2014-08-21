@@ -1,5 +1,9 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
+/**
+ * Abstrakti luokka, joka edustaa laskutoimitusta. Tarjoaa toiminnallisuuden
+ * laskutoimituksen laskettavien asettamiseksi.
+ */
 public abstract class Laskutoimitus implements Arvollinen {
     
     private Arvollinen etujasen;

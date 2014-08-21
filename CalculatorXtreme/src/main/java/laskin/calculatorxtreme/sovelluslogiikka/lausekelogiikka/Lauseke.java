@@ -4,6 +4,13 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Vastaa lauseketta, joka voi laskutoimitusten ja arvollisten lisaksi 
+ * sisaltaa lohkoja ja funktioita. Lausekkeen elementit syotetaan 
+ * luonnollisessa jarjestyksessa. Rakentaa suoritusrakenteen, jossa
+ * suoritus etenee sisemmista lohkoista ulompiin ja lohkoissa laskujarjestyksen
+ * mukaan. Arvoksi maaraytyy lausekkeen oikea arvo.
+ */
 public class Lauseke implements Arvollinen {
     
     private Lohko paalohko;

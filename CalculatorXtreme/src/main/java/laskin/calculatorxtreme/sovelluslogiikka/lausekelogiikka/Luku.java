@@ -1,5 +1,8 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
+/**
+ * Kapseloi double tyyppisen lukuarvon arvolliseksi.
+ */
 public class Luku implements Arvollinen {
     
     private double arvo;

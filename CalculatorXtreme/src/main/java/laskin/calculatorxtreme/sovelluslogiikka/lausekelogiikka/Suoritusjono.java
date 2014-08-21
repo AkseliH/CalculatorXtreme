@@ -1,5 +1,11 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
+/**
+ * Rakentaa suoritettavan rakenteen laskutoimituksista. 
+ * Luokalle annetaan laskutoimituksia ja arvollisia niiden 
+ * luonnollisessa jarjestyksessa. Arvoksi maaraytyy lausekkeen arvo
+ * laskettaessa ensimmaisesta viimeiseen.
+ */
 public class Suoritusjono implements Arvollinen {
     
     private Laskutoimitus viimeinen;

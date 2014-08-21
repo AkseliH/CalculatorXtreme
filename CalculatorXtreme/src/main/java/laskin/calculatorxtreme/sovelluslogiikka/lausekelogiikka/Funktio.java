@@ -1,5 +1,9 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
+/**
+ * Abstrakti luokka, joka edustaa yhden muuttujan funktiota. Tarjoaa
+ * toiminnallisuuden funktio argumentin asettamiseksi.
+ */
 public abstract class Funktio implements Arvollinen {
     
     private Arvollinen argumentti;

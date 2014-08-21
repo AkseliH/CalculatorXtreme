@@ -4,6 +4,10 @@ import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
 
+/**
+ * Tarjoaa toiminnallisuuden laskutoimituksen lukemiseksi String 
+ * tyyppisesta syotteesta ja laskutoimituksen lisaamiseksi lausekkeeseen. 
+ */
 public class LaskutoimituksenKasittelija {
     
     private ToimintoKirjasto kirjasto;

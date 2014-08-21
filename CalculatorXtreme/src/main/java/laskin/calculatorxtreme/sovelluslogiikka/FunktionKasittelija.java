@@ -4,6 +4,10 @@ import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
+/**
+ * Tarjoaa toiminnallisuuden funktion lukemiseksi String 
+ * tyyppisesta syotteesta ja funktion lisaamiseksi lausekkeeseen. 
+ */
 public class FunktionKasittelija {
     
     private ToimintoKirjasto kirjasto;

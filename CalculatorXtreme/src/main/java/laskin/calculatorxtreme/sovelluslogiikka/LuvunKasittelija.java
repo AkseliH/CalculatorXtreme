@@ -4,6 +4,10 @@ package laskin.calculatorxtreme.sovelluslogiikka;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Arvollinen;
 
+/**
+ * Tarjoaa toiminnallisuuden luvun luomiseksi String tyyppisesta 
+ * syotteesta.
+ */
 public class LuvunKasittelija {
     
     private String syote;

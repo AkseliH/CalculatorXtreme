@@ -3,6 +3,10 @@ package laskin.calculatorxtreme.sovelluslogiikka;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
 
+/**
+ * Tarjoaa toiminnallisuuden String tyyppisen lausekkeen muuntamiseksi
+ * suoritettavaan muotoon.
+ */
 public class MerkkijononKasittelija {
     
     private String syote;

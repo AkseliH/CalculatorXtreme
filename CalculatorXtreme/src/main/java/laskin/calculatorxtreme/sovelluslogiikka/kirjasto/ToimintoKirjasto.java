@@ -3,7 +3,11 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
-
+/**
+ * Tarjoaa toiminnallisuuden ohjelman tarjoamien toimintojen hakemiseksi
+ * String tyyppisen tunnisteen perusteella. Kokoaa eri tehdasluokkien
+ * palvelut yhden luokan alle.
+ */
 public class ToimintoKirjasto {
     
     private LaskutoimitusTehdas laskutoimitukset;

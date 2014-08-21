@@ -3,6 +3,13 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Vastaa lauseketta, joka koostuu laskutoimituksista ja arvollisista.
+ * Laskutoimitukset ja arvolliset syotetaan luonnollisessa jarjestyksessa.
+ * Rakentaa suoritettavan rakenteen, jossa laskujarjestys maaraytyy oikein
+ * laskutoimitusten prioriteetin perusteella. Arvoksi maaraytyy lausekkeen
+ * oikea arvo.
+ */
 public class Lohko implements Arvollinen {
     
     private List<Suoritusjono> suoritustasot;
