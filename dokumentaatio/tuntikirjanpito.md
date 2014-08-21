@@ -33,3 +33,5 @@ koodikatselmoinnin aloitus. Ei varsinaista edistymista.
 
 **20.8.2014** 2h 30min: Refaktorointia.
 
+**21.8.2014** 5h: Lohko luokan refaktorointia. Javadocin aloitus, uusi pit raportti ja kaksi sekvenssikaaviota.
+
