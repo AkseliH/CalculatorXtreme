@@ -108,16 +108,18 @@ public class LohkoTest {
     
     @Test
     public void useampiTasoinenLaskujarjestysOikein() {
+        lohko.lisaaJonoonArvollinen(new Luku(5));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(2));
         lohko.lisaaJonoonLaskutoimitus(new Potenssi());
         lohko.lisaaJonoonArvollinen(new Luku(3));
         lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
-        lohko.lisaaJonoonArvollinen(new Luku(5));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(3));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(5));
         lohko.paataLohko();
         
-        assertEquals(43, lohko.arvo(), 0.00001);
+        assertEquals(34, lohko.arvo(), 0.00001);
     }
     
     @Test
