@@ -30,12 +30,12 @@ public abstract class Laskutoimitus implements Arvollinen {
         return takajasen;
     }
     
+    /**
+     * Palauttaa true, jos laskutoimitukselle on asetettu laskettavat.
+     * @return 
+     */
     public boolean laskettavatAsetettu() {
-        if (etujasen == null || takajasen == null) {
-            return false;
-        }
-        
-        return true;
+       return etujasen != null && takajasen != null;
     }
     
     public int getPrioriteetti() {

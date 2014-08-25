@@ -8,6 +8,13 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
  */
 public class FunktioTehdas {
     
+    /**
+     * Palauttaa tunnusta vastaavan funktion. Jos tallaista ei ole 
+     * palauttaa null.
+     * 
+     * @param tunnus Tunnus, jolla haetaan.
+     * @return Tunnusta vastaava funktio.
+     */
     public Funktio hae(String tunnus) {
         if (tunnus.equals("sin")) { return new Sinifunktio(); }
         if (tunnus.equals("cos")) { return new Kosinifunktio(); }

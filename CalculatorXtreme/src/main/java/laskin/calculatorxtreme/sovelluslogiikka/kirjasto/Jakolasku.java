@@ -2,6 +2,9 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 
+/**
+ * Jakolaskua vastaava laskutoimitus.
+ */
 public class Jakolasku extends Laskutoimitus {
     
     public Jakolasku() {

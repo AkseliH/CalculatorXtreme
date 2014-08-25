@@ -2,6 +2,9 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
+/**
+ * Sinia vastaava funktio.
+ */
 public class Sinifunktio extends Funktio {
     
     public Sinifunktio() {

@@ -20,10 +20,23 @@ public class Lohko implements Arvollinen {
         suoritustasot.add(new Suoritusjono());
     }
     
+    /**
+     * Lisaa lohkoon laskutoimituksen huolehtien, etta suoritusrakennetta
+     * kutsuttaessa laskujarjestys maaraytyy oikein laskutoimitusten
+     * prioriteettien perusteella.
+     * 
+     * @param lisattava Lisattava laskutoimitus.
+     * @throws IllegalArgumentException Lisattava ei saa olla null.
+     * @throws IllegalStateException Lohkon muisti ei saa olla tyhja.
+     */
     public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) 
             throws IllegalArgumentException, IllegalStateException {
-       if (lisattava == null || seuraavaArvollinen == null) {
+       if (lisattava == null) {
            throw new IllegalArgumentException();
+       }
+       
+       if (seuraavaArvollinen == null) {
+           throw new IllegalStateException();
        }
       
        if (lisattava.getPrioriteetti() > suoritustasot.size()) {                      
@@ -36,7 +49,8 @@ public class Lohko implements Arvollinen {
     }
     
     /**
-     * Avaa uusia suoritustasoja kunnes suoritustasoja on yhta monta kuin
+     * Metodin lisaaSuurempiPrioriteetti apumetodi. Avaa uusia 
+     * suoritustasoja kunnes suoritustasoja on yhta monta kuin
      * parametrina annettu prioriteetti.
      * 
      * @param prioriteetti Taso, jolle noustaan.
@@ -50,8 +64,8 @@ public class Lohko implements Arvollinen {
     }
     
     /**
-     * Sulkee suoritustasoja kunnes uoritustasoja on yhta monta kuin
-     * parametrina annettu prioriteetti.
+     * Metodin lisaaPienempiPrioriteetti apumetodi. Sulkee suoritustasoja 
+     * kunnes suoritustasoja on yhta monta kuin parametrina annettu prioriteetti.
      * 
      * @param prioriteetti Taso, jolle lasketaan.
      */
@@ -64,7 +78,8 @@ public class Lohko implements Arvollinen {
     }
     
     /**
-     * Lisaa suoritusrakenteeseen laskutoimituksen, jonka prioriteetti
+     * Metodin lisaaJonoonLaskutoimitus apumetodi. Lisaa 
+     * suoritusrakenteeseen laskutoimituksen, jonka prioriteetti
      * on suurempi kuin lohkon nykyinen suoritustaso.
      * 
      * @param lisattava Lisattava laskutoimitus.
@@ -75,21 +90,46 @@ public class Lohko implements Arvollinen {
         nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
     }
     
+    /**
+     * Metodin lisaaJonoonLaskutoimitus apumetodi. Lisaa 
+     * suoritusrakenteeseen laskutoimituksen, jonka prioriteetti
+     * on pienempi kuin lohkon nykyinen suoritustaso.
+     * 
+     * @param lisattava Lisattava laskutoimitus.
+     */
     private void lisaaPienempiPrioriteetti(Laskutoimitus lisattava) {
         siirryAlemmalleSuoritustasolle(lisattava.getPrioriteetti());
         nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
     }
     
+    /**
+     * Metodin lisaaJonoonLaskutoimitus apumetodi. Lisaa 
+     * suoritusrakenteeseen laskutoimituksen, jonka prioriteetti
+     * on sama kuin lohkon nykyinen suoritustaso.
+     * 
+     * @param lisattava 
+     */
     private void lisaaSamaPrioriteetti(Laskutoimitus lisattava) {
         asetaJonoonArvollinen();
         nykyinenJono().lisaaJonoonLaskutoimitus(lisattava);
     }
     
+    /**
+     * Palauttaa suoritustason, jota kasitellaan kutsuhetkella.
+     * 
+     * @return Kutsuhetkella muokattava suoritusjono.
+     */
     private Suoritusjono nykyinenJono() {        
         return suoritustasot.get(suoritustasot.size() - 1);
     }
        
-    
+    /**
+     * Lisaa lohkon muistiin arvollisen.
+     * 
+     * @param lisattava Lisattava arvollinen.
+     * @throws IllegalArgumentException Lisattava ei saa olla null.
+     * @throws IllegalStateException Muistin tulee olla tyhja ennen lisaysta.
+     */
     public void lisaaJonoonArvollinen(Arvollinen lisattava) 
             throws IllegalArgumentException, IllegalStateException {
         if (lisattava == null) {
@@ -103,7 +143,13 @@ public class Lohko implements Arvollinen {
         this.seuraavaArvollinen = lisattava;
     }
     
-    public void asetaJonoonArvollinen() throws IllegalStateException {
+    /**
+     * Asettaa arvollisen lohkon muistista talla hetkella muokattavan
+     * suoritustason muistiin.
+     * 
+     * @throws IllegalStateException Lohkon muisti ei saa olla tyhja.
+     */
+    private void asetaJonoonArvollinen() throws IllegalStateException {
         if (seuraavaArvollinen == null) {
             throw new IllegalStateException();
         }
@@ -112,6 +158,14 @@ public class Lohko implements Arvollinen {
         this.seuraavaArvollinen = null;
     }
     
+    /**
+     * Asettaa arvollisen lohkon muistista nykyselle suoritustasolle ja
+     * paattaa jokaisen suoritustason. Kutsun jalkeen lohkon metodia arvo
+     * voidaan kutsua. Kutsun jalkeen lohkon tilaa muuttavia metodeja ei tule
+     * kutsua.
+     * 
+     * @throws IllegalStateException Muisti ei saa olla tyhja.
+     */
     public void paataLohko() throws IllegalStateException {
         asetaJonoonArvollinen();
         
@@ -120,11 +174,24 @@ public class Lohko implements Arvollinen {
         }
     }
 
+    /**
+     * Palauttaa syotetyn lausekkeen arvon laskettaessa laskutoimitukset 
+     * laskujarjestyksen mukaisesti.
+     * 
+     * @return Syotetyn lausekkeen arvo.
+     * @throws IllegalStateException 
+     */
     @Override
     public double arvo() throws IllegalStateException {
         return suoritustasot.get(0).arvo();
     }
     
+    /**
+     * Palauttaa tiedon siita, etta lohko ei sisalla laskutoimituksia
+     * tai arvollista.
+     * 
+     * @return 
+     */
     public boolean onTyhja() {
         return suoritustasot.get(0).onTyhja() && seuraavaArvollinen == null;
     }

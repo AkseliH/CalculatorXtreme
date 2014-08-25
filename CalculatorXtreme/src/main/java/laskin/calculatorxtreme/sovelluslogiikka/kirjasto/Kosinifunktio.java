@@ -2,6 +2,9 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
+/**
+ * Kosinia vastaava funktio.
+ */
 public class Kosinifunktio extends Funktio {
 
     @Override

@@ -21,10 +21,20 @@ public class Lauseke implements Arvollinen {
         this.lohkot = new ArrayList<Lohko>();
     }
     
+    /**
+     * Palauttaa true, jos lausekkeessa ei ole paalohkon lisaksi muita
+     * avoimia lhkoja.
+     * 
+     * @return 
+     */
     public boolean eiAvoimiaLohkoja() {
         return lohkot.isEmpty();
     }
     
+    /**
+     * Avaa uuden lohkon, lisaa linkin vanhaan lohkoon ja siirtaa kasittelyn
+     * uuteen lohkoon.
+     */
     public void avaaUusiLohko() {
         Lohko uusiLohko = new Lohko();
         this.nykyinenLohko().lisaaJonoonArvollinen(uusiLohko);
@@ -32,6 +42,10 @@ public class Lauseke implements Arvollinen {
         lohkot.add(uusiLohko);
     }
     
+    /**
+     * Palauttaa kutsuhetkella kasiteltavan lohkon.
+     * @return Nykyinen lohko.
+     */
     public Lohko nykyinenLohko() {
         if (this.eiAvoimiaLohkoja()) {
             return paalohko;
@@ -40,8 +54,13 @@ public class Lauseke implements Arvollinen {
         return lohkot.get(lohkot.size() - 1);
     }
     
-    
-    
+    /**
+     * Lisaa suoritusrakenteeseen funktion, avaa funktiolle lohkon ja
+     * siirtaa kasittelyn uuteen lohkoon.
+     * 
+     * @param funktio Lisattava funktio.
+     * @throws IllegalArgumentException Lisattava ei saa olla null.
+     */
     public void lisaaFunktioJaAvaaLohko(Funktio funktio) throws IllegalArgumentException {
         Lohko uusiLohko = new Lohko();
         funktio.setArgumentti(uusiLohko);
@@ -51,14 +70,31 @@ public class Lauseke implements Arvollinen {
         
     }
     
+    /**
+     * Lisaa nykyiseen lohkoon arvollisen.
+     * 
+     * @param arvollinen Lisattava arvollinen.
+     */
     public void lisaaArvollinen(Arvollinen arvollinen) {
         this.nykyinenLohko().lisaaJonoonArvollinen(arvollinen);
     }
     
+    /**
+     * Lisaa nykyiseen lohkoon laskutoimituksen.
+     * 
+     * @param laskutoimitus Lisattava laskutoimitus.
+     */
     public void lisaaLaskutoimitus(Laskutoimitus laskutoimitus) {
         this.nykyinenLohko().lisaaJonoonLaskutoimitus(laskutoimitus);
     }
     
+    /**
+     * Paattaa nykyisen lohkon, jolloin kasittely siirtyy edelliseen
+     * lohkoon. Kun paalohko on suljettu, lausekkeen tilaa muuttavia metodeja
+     * ei tule enaa kutsua.
+     * 
+     * @throws IllegalStateException Nykyisen lohkon tulee olla oikeassa tilassa.
+     */
     public void suljeLohko() throws IllegalStateException {
         this.nykyinenLohko().paataLohko();
         
@@ -68,6 +104,14 @@ public class Lauseke implements Arvollinen {
         
     }
 
+    /**
+     * Palauttaa syotetyn lausekkeen arvon laskien lohkot sisimmasta
+     * uloimpaan ja huomioiden lohkojen sisalla oikean laskujarjestyksen.
+     * Ennen kutsua lausekkeen kaikki lohkot tulee olla suljettu.
+     * 
+     * @return Syotetyn lausekkeen arvo.
+     * @throws IllegalStateException 
+     */
     @Override
     public double arvo() throws IllegalStateException {
         return paalohko.arvo();

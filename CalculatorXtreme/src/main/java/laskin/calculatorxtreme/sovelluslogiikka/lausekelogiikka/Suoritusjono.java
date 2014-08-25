@@ -21,13 +21,15 @@ public class Suoritusjono implements Arvollinen {
     }
     
     public boolean eiSisallaLaskutoimituksia() {
-        if (viimeinen == null) {
-            return true;
-        }
-        
-        return false;
+        return viimeinen == null;
     }
     
+    /**
+     * Palauttaa tiedon siita, etta jono ei sisalla laskutoimituksia
+     * ja muisti on tyhja.
+     * 
+     * @return 
+     */
     public boolean onTyhja() {
         return eiSisallaLaskutoimituksia() && seuraavaArvollinen == null;
     }
@@ -136,7 +138,7 @@ public class Suoritusjono implements Arvollinen {
      * tulee olla kutsuttu kerran.
      * 
      * @return Jonon arvo laskettaessa laskutoimitukset ensimmaisesta viimeiseen.
-     * @throws IllegalStateException 
+     * @throws IllegalStateException Tyhjan jonon arvoa ei voida kutsua.
      */
     @Override
     public double arvo() throws IllegalStateException {

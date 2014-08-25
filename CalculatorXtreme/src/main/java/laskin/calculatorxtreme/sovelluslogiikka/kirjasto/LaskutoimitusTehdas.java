@@ -8,6 +8,13 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
  */
 public class LaskutoimitusTehdas {
     
+    /**
+     * Paluttaa tunnusta vastaavan laskutoimituksen. Jos tallaista ei ole
+     * palauttaa null.
+     * 
+     * @param tunnus Tunnus, jolla haetaan.
+     * @return Tunnusta vastaava laskutoimitus.
+     */
     public Laskutoimitus hae(String tunnus) {
         if (tunnus.equals("+")) { return new Plus(); }
         if (tunnus.equals("-")) { return new Miinus(); }

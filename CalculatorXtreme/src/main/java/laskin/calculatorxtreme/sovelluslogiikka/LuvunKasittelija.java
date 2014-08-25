@@ -32,6 +32,15 @@ public class LuvunKasittelija {
         this.paikka = paikka;
     }
     
+    /**
+     * Lukee syotteesta yhden yhtenaisen luvun lukien kutsuhetken 
+     * paikasta ja luo tata arvoa vastaavan luvun, joka palautetaan
+     * arvollisena.
+     * 
+     * @return Syotteen luku.
+     * @throws IllegalStateException Syotteen kohdan tulee sisaltaa luku.
+     * @throws IllegalArgumentException 
+     */
     public Arvollinen lueLuku() 
             throws IllegalStateException, IllegalArgumentException {
         
@@ -50,6 +59,11 @@ public class LuvunKasittelija {
     
     }
     
+    /**
+     * Testaa, etta aloituspaikka aloittaa luvun.
+     * 
+     * @return 
+     */
     private boolean lukeminenVoidaanAloittaa() {
         if (syote == null) {
             return false;

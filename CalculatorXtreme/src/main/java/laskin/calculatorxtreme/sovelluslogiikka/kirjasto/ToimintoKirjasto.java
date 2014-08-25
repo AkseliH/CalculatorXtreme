@@ -19,10 +19,22 @@ public class ToimintoKirjasto {
         this.funktiot = new FunktioTehdas();
     }
     
+    /**
+     * Palauttaa tunnusta vastaavan laskutoimituksen. Jos tallaista ei ole
+     * palautetaan null.
+     * @param tunnus Tunnus, jolla haetaan.
+     * @return Tunnusta vastaava laskutoimitus.
+     */
     public Laskutoimitus haeLaskutoimitus(String tunnus) {
         return laskutoimitukset.hae(tunnus);
     }
     
+    /**
+     * Palauttaa tunnusta vastaavan funktion. Jos tallaista ei ole
+     * palautetaan null.
+     * @param tunnus Tunnus, jolla haetaan.
+     * @return Tunnusta vastaava funktio.
+     */
     public Funktio haeFunktio(String tunnus) {
         return funktiot.hae(tunnus);
     }

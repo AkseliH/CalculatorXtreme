@@ -2,6 +2,9 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 
+/**
+ * Vahennyslaskua vastaava laskutoimitus.
+ */
 public class Miinus extends Laskutoimitus {
     
     public Miinus() {

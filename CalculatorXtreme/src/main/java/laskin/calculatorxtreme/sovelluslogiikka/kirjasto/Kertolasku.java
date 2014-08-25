@@ -2,6 +2,9 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 
+/**
+ * Kertolaskua vastaava laskutoimitus.
+ */
 public class Kertolasku extends Laskutoimitus {
     
     public Kertolasku() {

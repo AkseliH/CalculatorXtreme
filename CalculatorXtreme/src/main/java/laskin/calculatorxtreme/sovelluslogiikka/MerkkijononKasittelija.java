@@ -29,6 +29,13 @@ public class MerkkijononKasittelija {
         this.syote = syote;
     }
     
+    /**
+     * Kasittelee syotteesta seuraavan elementin lukien kutsuhetken
+     * paikasta.
+     * 
+     * @throws IllegalStateException
+     * @throws IllegalArgumentException 
+     */
     private void kasitteleSeuraava() 
             throws IllegalStateException, IllegalArgumentException {
         if (seuraavanaLuku()) {
@@ -48,6 +55,12 @@ public class MerkkijononKasittelija {
         }
     }
     
+    /**
+     * Tarkistaa onko seuraava elementti luku lukien kutsuhetken 
+     * paikasta.
+     * 
+     * @return 
+     */
     private boolean seuraavanaLuku() {
         if (syote.substring(paikka, paikka + 1).matches("[0-9|.]")) {
             return true;
@@ -61,6 +74,12 @@ public class MerkkijononKasittelija {
         return false;
     }
     
+    /**
+     * Tarkistaa onko seuraava elementti laskutoimitus lukien kutsuhetken 
+     * paikasta.
+     * 
+     * @return 
+     */
     private boolean seuraavanaLaskutoimitus() {        
         if (syote.substring(paikka, paikka + 1).equals("-")) {
             return true;
@@ -69,10 +88,23 @@ public class MerkkijononKasittelija {
         return syote.substring(paikka, paikka + 1).matches("[+|*|/|']");
     }
     
+    /**
+     * Tarkistaa onko seuraava elementti funktio lukien kutsuhetken 
+     * paikasta.
+     * 
+     * @return 
+     */
     private boolean seuraavanaFunktio() {
         return syote.substring(paikka, paikka + 1).matches("[a-z]");
     }
     
+    /**
+     * Lukee syotteen elementti kerrallaan rakentaen suoritettavan 
+     * lausekkeen. Metodia tulee kutsua vain kerran.
+     * 
+     * @throws IllegalStateException
+     * @throws IllegalArgumentException 
+     */
     public void kasitteleLauseke() 
             throws IllegalStateException, IllegalArgumentException {
         while (paikkaSisaltyySyotteeseen()) {
@@ -82,6 +114,13 @@ public class MerkkijononKasittelija {
         lauseke.suljeLohko();
     }
     
+    /**
+     * Metodin kasitteleSeuraava apumetodi. Lukee luvun kutsuhetken paikasta
+     * ja lisaa sen lausekkeeseen.
+     * 
+     * @throws IllegalStateException
+     * @throws IllegalArgumentException 
+     */
     private void kasitteleLuku() 
             throws IllegalStateException, IllegalArgumentException {
         LuvunKasittelija kasittelija = new LuvunKasittelija(syote, paikka);
@@ -90,6 +129,12 @@ public class MerkkijononKasittelija {
         paikka = kasittelija.getPaikka();
     }
     
+    /**
+     * Metodin kasitteleSeuraava apumetodi. Lukee laskutoimituksen
+     * kutsuhetken paikasta ja lisaa sen lausekkeeseen.
+     * 
+     * @throws IllegalStateException 
+     */
     private void kasitteleLaskutoimitus() throws IllegalStateException {
         LaskutoimituksenKasittelija kasittelija = new LaskutoimituksenKasittelija(
                 kirjasto, syote, lauseke, paikka);            
@@ -98,6 +143,12 @@ public class MerkkijononKasittelija {
         paikka = kasittelija.getPaikka();
     }
     
+    /**
+     * Metodin kasitteleSeuraava apumetodi. Lukee funktion
+     * kutsuhetken paikasta ja lisaa sen lausekkeeseen.
+     * 
+     * @throws IllegalStateException 
+     */
     private void kasitteleFunktio() throws IllegalStateException {
         FunktionKasittelija kasittelija = new FunktionKasittelija(
                 kirjasto, syote, lauseke, paikka);            
@@ -106,18 +157,26 @@ public class MerkkijononKasittelija {
         paikka = kasittelija.getPaikka();
     }
     
+    /**
+     * Palauttaa true, jos tamanhetkinen paikka vastaa jotain syotteen
+     * merkkia.
+     * 
+     * @return 
+     */
     private boolean paikkaSisaltyySyotteeseen() {
-        if (paikka >= 0 && paikka < syote.length()) {
-            return true;
-        }
-        
-        return false;
+        return paikka >= 0 && paikka < syote.length();
     }
     
     public Lauseke getLauseke() {
         return lauseke;
     }
     
+    /**
+     * Palauttaa lausekkeen arvon. Metodia kasitteleLauseke tulee olla
+     * kutsuttu ennen kutsua.
+     * 
+     * @return Lausekkeen arvo.
+     */
     public double arvo() {
         return lauseke.arvo();
     }

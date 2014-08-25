@@ -20,12 +20,13 @@ public abstract class Funktio implements Arvollinen {
         this.argumentti = argumentti;
     }
     
+    /**
+     * Palauttaa true, jos funktion argumentti on asetettu.
+     * 
+     * @return 
+     */
     public boolean argumenttiAsetettu() {
-        if (argumentti == null) {
-            return false;
-        }
-        
-        return true;
+        return argumentti != null;
     }
     
     @Override

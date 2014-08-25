@@ -2,6 +2,9 @@ package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Laskutoimitus;
 
+/**
+ * Yhteenlaskua vastaava laskutoimitus.
+ */
 public class Plus extends Laskutoimitus {
     
     public Plus() {
