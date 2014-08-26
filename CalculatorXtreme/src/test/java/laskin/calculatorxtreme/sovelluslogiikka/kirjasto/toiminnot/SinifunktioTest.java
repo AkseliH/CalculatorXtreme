@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class SinifunktioTest {
     
@@ -30,6 +32,16 @@ public class SinifunktioTest {
     
     @After
     public void tearDown() {
+    }
+    
+    @Rule
+    public ExpectedException virhe = ExpectedException.none();
+    
+    @Test
+    public void illegalStateExceptionKunArvoaKutsutaanEnnenArgumenttia() {
+        virhe.expect(IllegalStateException.class);
+        
+        sin.arvo();
     }
 
     @Test

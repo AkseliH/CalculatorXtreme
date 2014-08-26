@@ -41,7 +41,7 @@ public class LuvunKasittelijaTest {
         virhe.expect(IllegalStateException.class);
         
         kasittelija.setSyote("1");
-        kasittelija.setPaikka(5);
+        kasittelija.setPaikka(1);
         kasittelija.lueLuku();
     }
     

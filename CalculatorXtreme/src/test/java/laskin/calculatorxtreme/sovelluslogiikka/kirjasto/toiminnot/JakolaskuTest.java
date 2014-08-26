@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class JakolaskuTest {
     
@@ -30,6 +32,25 @@ public class JakolaskuTest {
     
     @After
     public void tearDown() {
+    }
+    
+    @Rule
+    public ExpectedException virhe = ExpectedException.none();
+    
+    @Test
+    public void illegalStateExceptionKunArvoaKysytaanEnnenLaskettavia() {
+        virhe.expect(IllegalStateException.class);
+        
+        jakolasku.arvo();
+    }
+    
+    @Test
+    public void illegalStateExceptionKunJakajaNollaJaKysytaanArvoa() {
+        virhe.expect(IllegalStateException.class);
+        
+        jakolasku.setEtujasen(new Luku(1));
+        jakolasku.setTakajasen(new Luku(0));
+        jakolasku.arvo();
     }
     
     @Test

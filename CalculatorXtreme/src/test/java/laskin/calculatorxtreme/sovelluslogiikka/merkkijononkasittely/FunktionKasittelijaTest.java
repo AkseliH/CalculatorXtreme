@@ -46,7 +46,7 @@ public class FunktionKasittelijaTest {
         virhe.expect(IllegalStateException.class);
         
         kasittelija.setSyote("sin(0)");
-        kasittelija.setPaikka(10);
+        kasittelija.setPaikka(6);
         kasittelija.lueFunktio();
     }
     
