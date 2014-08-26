@@ -202,5 +202,9 @@ public class Lohko implements Arvollinen {
     public boolean onTyhja() {
         return suoritustasot.get(0).onTyhja() && seuraavaArvollinen == null;
     }
+    
+    public int nykyinenPrioriteetti() {
+        return suoritustasot.size();
+    }
 
 }

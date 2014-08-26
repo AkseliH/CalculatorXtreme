@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class LohkoTest {
     
@@ -34,6 +36,38 @@ public class LohkoTest {
     
     @After
     public void tearDown() {
+    }
+    
+    @Rule
+    public ExpectedException virhe = ExpectedException.none();
+    
+    @Test
+    public void illegalArgumentExceptionKunLisattavaArvollinenNull() {
+        virhe.expect(IllegalArgumentException.class);
+        
+        lohko.lisaaJonoonArvollinen(null);
+    }
+    
+    @Test
+    public void illegalArgumentExceptionKunLisattavaLaskutoimitusNull() {
+        virhe.expect(IllegalArgumentException.class);
+        
+        lohko.lisaaJonoonLaskutoimitus(null);
+    }
+    
+    @Test
+    public void illegalStateExceptionKunKaksiArvollistaPerattain() {
+        virhe.expect(IllegalStateException.class);
+        
+        lohko.lisaaJonoonArvollinen(new Luku(1));
+        lohko.lisaaJonoonArvollinen(new Luku(-1));
+    }
+    
+    @Test
+    public void illegalStateExceptionKunPaatetaanTyhjaLohko() {
+        virhe.expect(IllegalStateException.class);
+        
+        lohko.paataLohko();
     }
 
     @Test
@@ -140,5 +174,15 @@ public class LohkoTest {
         assertEquals(-0.75, lohko.arvo(), 0.00001);
     }
     
+    @Test
+    public void prioritettiOikein() {
+        lohko.lisaaJonoonArvollinen(new Luku(2));
+        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaJonoonArvollinen(new Luku(3));
+        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaJonoonArvollinen(new Luku(4));
+        
+        assertEquals(2, lohko.nykyinenPrioriteetti());
+    }
     
 }
