@@ -8,11 +8,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PlusTest {
+public class JakolaskuTest {
     
-    Plus plus;
+    Jakolasku jakolasku;
     
-    public PlusTest() {
+    public JakolaskuTest() {
     }
     
     @BeforeClass
@@ -25,7 +25,7 @@ public class PlusTest {
     
     @Before
     public void setUp() {
-        plus = new Plus();
+        jakolasku = new Jakolasku();
     }
     
     @After
@@ -33,23 +33,14 @@ public class PlusTest {
     }
     
     @Test
-    public void laskettavatAsetettuAsettamisenJalkeen() {
-        plus.setEtujasen(new Luku(1));
-        plus.setTakajasen(new Luku(2));
-        
-        assertTrue(plus.laskettavatAsetettu());
+    public void prioriteettiOikea() {
+        assertEquals(2, jakolasku.getPrioriteetti());
     }
 
     @Test
-    public void prioriteettiOikea() {
-        assertEquals(1, plus.getPrioriteetti());
-    }
-    
-    @Test
     public void arvoOikeinArvollistenLisayksenJalkeen() {
-        plus.setEtujasen(new Luku(1));
-        plus.setTakajasen(new Luku(2));
-        
-        assertEquals(3, plus.arvo(), 0.00001);
+        jakolasku.setEtujasen(new Luku(7));
+        jakolasku.setTakajasen(new Luku(2));
+        assertEquals(3.5, jakolasku.arvo(), 0.00001);
     }
 }
