@@ -1,7 +1,7 @@
 package laskin.calculatorxtreme.kayttoliittyma;
 
 import java.util.Scanner;
-import laskin.calculatorxtreme.sovelluslogiikka.MerkkijononKasittelija;
+import laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.MerkkijononKasittelija;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 
 public class TekstiKayttoliittyma {

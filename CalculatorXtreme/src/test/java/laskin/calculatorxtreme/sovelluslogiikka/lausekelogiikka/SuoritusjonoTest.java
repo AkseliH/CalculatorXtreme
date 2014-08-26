@@ -1,8 +1,8 @@
 package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
 
-import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
-import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Plus;
-import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Potenssi;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Kertolasku;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Plus;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Potenssi;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

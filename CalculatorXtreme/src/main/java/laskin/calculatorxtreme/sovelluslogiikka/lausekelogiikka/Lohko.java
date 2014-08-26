@@ -12,7 +12,14 @@ import java.util.List;
  */
 public class Lohko implements Arvollinen {
     
+    /**
+     * Avoinna olevat prioriteetti tasot.
+     */
     private List<Suoritusjono> suoritustasot;
+    
+    /**
+     * Muistipaikka seuraavana asetettavalle arvolliselle.
+     */
     private Arvollinen seuraavaArvollinen;
     
     public Lohko() {

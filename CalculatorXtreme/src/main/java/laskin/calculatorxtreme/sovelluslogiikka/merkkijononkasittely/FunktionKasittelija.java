@@ -1,4 +1,4 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely;
 
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;

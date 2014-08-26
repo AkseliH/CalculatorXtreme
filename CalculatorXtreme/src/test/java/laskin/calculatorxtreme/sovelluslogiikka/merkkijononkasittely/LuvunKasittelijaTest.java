@@ -1,4 +1,4 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely;
 
 import org.junit.After;
 import org.junit.AfterClass;

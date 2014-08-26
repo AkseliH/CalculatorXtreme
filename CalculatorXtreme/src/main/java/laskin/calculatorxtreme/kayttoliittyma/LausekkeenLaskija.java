@@ -3,7 +3,7 @@ package laskin.calculatorxtreme.kayttoliittyma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
-import laskin.calculatorxtreme.sovelluslogiikka.MerkkijononKasittelija;
+import laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.MerkkijononKasittelija;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 
 public class LausekkeenLaskija implements ActionListener {

@@ -1,5 +1,7 @@
 package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
 
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Sinifunktio;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Kosinifunktio;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
 /**

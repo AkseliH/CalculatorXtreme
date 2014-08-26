@@ -1,5 +1,5 @@
 
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Arvollinen;

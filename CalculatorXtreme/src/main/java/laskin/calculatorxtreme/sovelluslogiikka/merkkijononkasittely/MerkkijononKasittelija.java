@@ -1,6 +1,6 @@
-package laskin.calculatorxtreme.sovelluslogiikka;
+package laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely;
 
-import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Kertolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;

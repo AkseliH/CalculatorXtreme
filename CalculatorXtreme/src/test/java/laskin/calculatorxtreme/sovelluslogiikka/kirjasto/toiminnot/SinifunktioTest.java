@@ -1,4 +1,4 @@
-package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;
+package laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot;
 
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
 import org.junit.After;
@@ -8,11 +8,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PlusTest {
+public class SinifunktioTest {
     
-    Plus plus;
+    Sinifunktio sin;
     
-    public PlusTest() {
+    public SinifunktioTest() {
     }
     
     @BeforeClass
@@ -25,26 +25,24 @@ public class PlusTest {
     
     @Before
     public void setUp() {
-        plus = new Plus();
+        sin = new Sinifunktio();
     }
     
     @After
     public void tearDown() {
     }
-    
-    @Test
-    public void laskettavatAsetettuAsettamisenJalkeen() {
-        plus.setEtujasen(new Luku(1));
-        plus.setTakajasen(new Luku(2));
-        
-        assertTrue(plus.laskettavatAsetettu());
-    }
 
     @Test
-    public void arvoOikeinArvollistenLisayksenJalkeen() {
-        plus.setEtujasen(new Luku(1));
-        plus.setTakajasen(new Luku(2));
+    public void argumenttiAsetettuAsettamisenJalkeen() {
+        sin.setArgumentti(new Luku(1));
         
-        assertEquals(3, plus.arvo(), 0.00001);
+        assertTrue(sin.argumenttiAsetettu());
+    }
+    
+    @Test
+    public void arvoOikeinArgumentinLisayksenJalkeen() {
+        sin.setArgumentti(new Luku(Math.PI/2));
+        
+        assertEquals(1, sin.arvo(), 0.00001);
     }
 }
