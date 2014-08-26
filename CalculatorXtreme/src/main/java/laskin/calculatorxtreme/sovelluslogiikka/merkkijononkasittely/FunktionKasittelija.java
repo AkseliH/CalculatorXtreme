@@ -23,6 +23,10 @@ public class FunktionKasittelija {
         this.paikka = paikka;
     }
     
+    public FunktionKasittelija(ToimintoKirjasto kirjasto) {
+        this(kirjasto, "", new Lauseke(), 0);
+    }
+    
     public void lueFunktio() throws IllegalStateException {
         
         if (!merkkiOsaTunnusta()) {
@@ -85,5 +89,17 @@ public class FunktionKasittelija {
     
     public int getPaikka() {
         return paikka;
+    }
+    
+    public void setPaikka(int paikka) {
+        this.paikka = paikka;
+    }
+    
+    public Lauseke getLauseke() {
+        return lauseke;
+    }
+    
+    public void setSyote(String syote) {
+        this.syote = syote;
     }
 }

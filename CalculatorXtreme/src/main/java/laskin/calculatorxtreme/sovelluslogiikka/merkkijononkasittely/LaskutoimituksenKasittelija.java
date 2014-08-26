@@ -76,4 +76,12 @@ public class LaskutoimituksenKasittelija {
     public int getPaikka() {
         return paikka;
     }
+    
+    public void setSyote(String syote) {
+        this.syote = syote;
+    }
+    
+    public Lauseke getLauseke() {
+        return lauseke;
+    }
 }
