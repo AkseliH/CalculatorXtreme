@@ -24,7 +24,5 @@ public class App {
 //        
         GraafinenKayttoliittyma kayttoliittyma = new GraafinenKayttoliittyma(kirjasto);
         SwingUtilities.invokeLater(kayttoliittyma);
-
-
     }
 }

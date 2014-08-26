@@ -55,24 +55,4 @@ public class LuvunKasittelijaTest {
         kasittelija.setPaikka(3);
         assertEquals(14.53, kasittelija.lueLuku().arvo(), 0.00001);
     }
-    
-    @Test
-    public void lukeeNegatiivisenLuvunOikein() {
-        kasittelija.setSyote("-16.567");
-        assertEquals(-16.567, kasittelija.lueLuku().arvo(), 0.00001);
-    }
-    
-    @Test
-    public void lukeeNegatiivisenLuvunOikeinTekstista() {
-        kasittelija.setSyote("asdaf-88.45hgdflhg");
-        kasittelija.setPaikka(5);
-        assertEquals(-88.45, kasittelija.lueLuku().arvo(), 0.00001);
-    }
-    
-    @Test
-    public void miinusLuvunJalkeenEiVaikuta() {
-        kasittelija.setSyote("-16.567-");
-        assertEquals(-16.567, kasittelija.lueLuku().arvo(), 0.00001);
-    }
-
 }

@@ -77,6 +77,13 @@ public class MerkkijononKasittelijaTest {
     }
     
     @Test
+    public void negatiivisuusFunktioidenKanssaOikein() {
+        kasittelija.setSyote("-cos(-1+1)");
+        kasittelija.kasitteleLauseke();
+        assertEquals(-1, kasittelija.getLauseke().arvo(), 0.00001);
+    }
+    
+    @Test
     public void funktiotOikein() {
         kasittelija.setSyote("sin(-2+2)*3+sin(sin(0))");
         kasittelija.kasitteleLauseke();
@@ -89,5 +96,4 @@ public class MerkkijononKasittelijaTest {
         kasittelija.kasitteleLauseke();
         assertEquals(16, kasittelija.getLauseke().arvo(), 0.00001);
     }
-
 }

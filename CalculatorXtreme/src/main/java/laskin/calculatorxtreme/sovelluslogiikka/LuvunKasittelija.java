@@ -77,10 +77,6 @@ public class LuvunKasittelija {
             return true;
         }
         
-        if (kasitteleMiinus()) {
-            return true;
-        }
-        
         return false;
     }
     
@@ -126,15 +122,6 @@ public class LuvunKasittelija {
     
     private boolean paikkaSisaltaaDesimaalipisteen() {
         return syote.substring(paikka, paikka + 1).equals(".");
-    }
-    
-    private boolean kasitteleMiinus() {
-        if (syote.substring(paikka, paikka + 1).equals("-")) {
-            paikka++;
-            return true;
-        }
-        
-        return false;
     }
     
     private boolean paikkaSisaltyySyotteeseen() {

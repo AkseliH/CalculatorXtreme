@@ -1,7 +1,9 @@
 package laskin.calculatorxtreme.sovelluslogiikka;
 
+import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.Kertolasku;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
+import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
 
 /**
  * Tarjoaa toiminnallisuuden String tyyppisen lausekkeen muuntamiseksi
@@ -40,6 +42,8 @@ public class MerkkijononKasittelija {
             throws IllegalStateException, IllegalArgumentException {
         if (seuraavanaLuku()) {
             kasitteleLuku();            
+        } else if (seuraavanaNegatiiviMiinus()) {
+            kasitteleNegatiiviMiinus();
         } else if (seuraavanaLaskutoimitus()){
             kasitteleLaskutoimitus();            
         } else if (seuraavanaFunktio()) {
@@ -62,16 +66,18 @@ public class MerkkijononKasittelija {
      * @return 
      */
     private boolean seuraavanaLuku() {
-        if (syote.substring(paikka, paikka + 1).matches("[0-9|.]")) {
-            return true;
-        }
-        
-        if (syote.substring(paikka, paikka + 1).equals("-") 
-                && lauseke.nykyinenLohko().onTyhja()) {
-            return true;
-        }
-        
-        return false;
+        return syote.substring(paikka, paikka + 1).matches("[0-9|.]");
+    }
+    
+    /**
+     * Tarkistaa onko seuraava elementti negattivisen luvun osoittava
+     * miinusmerkki.
+     * 
+     * @return 
+     */
+    private boolean seuraavanaNegatiiviMiinus() {
+        return syote.substring(paikka, paikka + 1).equals("-") 
+                && lauseke.nykyinenLohko().onTyhja();
     }
     
     /**
@@ -127,6 +133,16 @@ public class MerkkijononKasittelija {
         lauseke.lisaaArvollinen(kasittelija.lueLuku());
             
         paikka = kasittelija.getPaikka();
+    }
+    
+    /**
+     * Kasittelee negatiivisuuden osoittavan miinusmerkin lisaamalla 
+     * kertomisen luvulla -1.
+     */
+    private void kasitteleNegatiiviMiinus() {
+        lauseke.lisaaArvollinen(new Luku(-1));
+        lauseke.lisaaLaskutoimitus(new Kertolasku());
+        paikka++;
     }
     
     /**

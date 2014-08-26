@@ -104,7 +104,7 @@ public class GraafinenKayttoliittyma implements Runnable {
     }
     
     private JPanel luoNumeroNappaimisto(JTextField syotekentta) {
-        JPanel nappaimisto = new JPanel(new GridLayout(3,4));
+        JPanel nappaimisto = new JPanel(new GridLayout(4,4));
         
         JButton nappain1 = new JButton("1");
         nappain1.addActionListener(new NappaimenKirjoittaja("1", syotekentta));
@@ -147,12 +147,19 @@ public class GraafinenKayttoliittyma implements Runnable {
         nappaimisto.add(nappain0);
         
         JButton nappainSulkuAuki = new JButton("(");
-        nappainSulkuAuki.addActionListener(new NappaimenKirjoittaja("(", syotekentta));
+        nappainSulkuAuki.addActionListener(
+                new NappaimenKirjoittaja("(", syotekentta));
         nappaimisto.add(nappainSulkuAuki);
         
         JButton nappainSulkuKiinni = new JButton(")");
-        nappainSulkuKiinni.addActionListener(new NappaimenKirjoittaja(")", syotekentta));
+        nappainSulkuKiinni.addActionListener(
+                new NappaimenKirjoittaja(")", syotekentta));
         nappaimisto.add(nappainSulkuKiinni);
+        
+        JButton nappainDesimaaliPiste = new JButton(".");
+        nappainDesimaaliPiste.addActionListener(
+                new NappaimenKirjoittaja(".", syotekentta));
+        nappaimisto.add(nappainDesimaaliPiste);
         
         return nappaimisto;
     }
