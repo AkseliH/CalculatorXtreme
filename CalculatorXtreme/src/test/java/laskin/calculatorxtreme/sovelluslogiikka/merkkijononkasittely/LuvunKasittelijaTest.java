@@ -32,6 +32,14 @@ public class LuvunKasittelijaTest {
     }
     
     @Test
+    public void luvunLukemisenJalkeenOikeallaPaikalla() {
+        kasittelija.setSyote("312.5ab");
+        kasittelija.lueLuku();
+        
+        assertEquals(5, kasittelija.getPaikka());
+    }
+    
+    @Test
     public void lukeeKokonaisluvunOikein() {
         kasittelija.setSyote("3");
         assertEquals(3, kasittelija.lueLuku().arvo(), 0.00001);

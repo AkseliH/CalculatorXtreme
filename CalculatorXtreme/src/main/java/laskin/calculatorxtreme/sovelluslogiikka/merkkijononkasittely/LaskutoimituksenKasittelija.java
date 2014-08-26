@@ -23,6 +23,10 @@ public class LaskutoimituksenKasittelija {
         this.paikka = paikka;
     }
     
+    public LaskutoimituksenKasittelija(ToimintoKirjasto kirjasto) {
+        this(kirjasto, "", new Lauseke(), 0);
+    }
+    
     public void lueLaskutoimitus() throws IllegalStateException {
         
         if (!merkkiOsaTunnusta()) {
@@ -65,6 +69,9 @@ public class LaskutoimituksenKasittelija {
         return syote.substring(paikka, paikka + 1).matches("[+|*|/|']");
     }
     
+    public void setPaikka(int paikka) {
+        this.paikka = paikka;
+    }
     
     public int getPaikka() {
         return paikka;
