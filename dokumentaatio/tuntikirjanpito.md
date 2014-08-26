@@ -37,3 +37,5 @@ koodikatselmoinnin aloitus. Ei varsinaista edistymista.
 
 **25.8.2014** 1h: Javadocia metodeille.
 
+**26.8.2014** 4h 30min: Testeja, varsinkin virheiden testausta.
+ 
