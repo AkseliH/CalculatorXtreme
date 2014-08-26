@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class SuoritusjonoTest {
     
@@ -27,11 +29,52 @@ public class SuoritusjonoTest {
     
     @Before
     public void setUp() {
-        jono = new Suoritusjono(new Luku(1));
+        jono = new Suoritusjono();
     }
     
     @After
     public void tearDown() {
+    }
+    
+    @Rule
+    public ExpectedException virhe = ExpectedException.none();
+    
+    @Test
+    public void illegalStateExceptionTyhjanJononArvolla() {
+        virhe.expect(IllegalStateException.class);
+        
+        jono.arvo();
+    }
+    
+    @Test
+    public void illegalStateExceptionKunYritetaanLisataKaksiArvollista() {
+        virhe.expect(IllegalStateException.class);
+        
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
+        jono.lisaaSeuraavaArvollinen(new Luku(2));
+    }
+    
+    @Test
+    public void illegalStateExceptionKunLoppuuLaskutoimitukseen() {
+        virhe.expect(IllegalStateException.class);
+        
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
+        jono.lisaaJonoonLaskutoimitus(new Plus());
+        jono.paataJono();
+    }
+    
+    @Test
+    public void illegalArgumentExceptionKunLisattavaArvollinenNull() {
+        virhe.expect(IllegalArgumentException.class);
+        
+        jono.lisaaSeuraavaArvollinen(null);
+    }
+    
+    @Test
+    public void illegalArgumentExceptionKunLisattavaLaskuNull() {
+        virhe.expect(IllegalArgumentException.class);
+        
+        jono.lisaaJonoonLaskutoimitus(null);
     }
     
     @Test
@@ -39,26 +82,23 @@ public class SuoritusjonoTest {
         assertTrue(jono.eiSisallaLaskutoimituksia());
     }
     
-    
-    @Test
-    public void konstruktoriAsettaaArvollisen() {       
-        assertEquals(1, jono.getSeuraavaArvollinen().arvo(), 0.00001);
-    }
-    
     @Test
     public void jononArvoOikeinPelkallaArvollisella() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         assertEquals(1, jono.arvo(), 0.00001);
     }
     
     @Test
     public void jonoEiTyhjaLaskutoimituksenLisayksenJalkeen() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.lisaaJonoonLaskutoimitus(new Plus());
         
-       assertFalse(jono.eiSisallaLaskutoimituksia());
+        assertFalse(jono.eiSisallaLaskutoimituksia());
     }
     
     @Test
     public void asetaEnsimmainenAsettaaViimeisen() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.asetaEnsimmainen(new Plus());
         
         assertFalse(jono.getViimeinen() == null);
@@ -66,12 +106,14 @@ public class SuoritusjonoTest {
     
     @Test
     public void lisaaLaskutoimitusLisaaEnsimmaisenLaskutoimituksen() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.lisaaJonoonLaskutoimitus(new Plus());   
         assertFalse(jono.eiSisallaLaskutoimituksia());
     }
     
     @Test
     public void arvoOikeinPaattamisenJalkeenPelkallaArvollisella() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.paataJono();
         
         assertEquals(1, jono.arvo(), 0.00001);
@@ -79,6 +121,7 @@ public class SuoritusjonoTest {
     
     @Test
     public void lisaaSeuraavaArvollinenLisaaUudenArvollisen() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.lisaaJonoonLaskutoimitus(new Plus());
         jono.lisaaSeuraavaArvollinen(new Luku(2));
         
@@ -88,6 +131,7 @@ public class SuoritusjonoTest {
     
     @Test
     public void paataAsettaaSeuraavanArvollisenViimeiselle() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.lisaaJonoonLaskutoimitus(new Plus());
         jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.paataJono();
@@ -97,6 +141,7 @@ public class SuoritusjonoTest {
     
     @Test
     public void arvoOikeinLaskutoimituksenJaLuvunLisayksenJaPaattamisenJalkeen() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.lisaaJonoonLaskutoimitus(new Plus());
         jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.paataJono();
@@ -106,6 +151,7 @@ public class SuoritusjonoTest {
     
     @Test
     public void laskeeLaskutoimituksetEnsimmaisestaViimeiseen() {
+        jono.lisaaSeuraavaArvollinen(new Luku(1));
         jono.lisaaJonoonLaskutoimitus(new Potenssi());
         jono.lisaaSeuraavaArvollinen(new Luku(-4));
         jono.lisaaJonoonLaskutoimitus(new Kertolasku());

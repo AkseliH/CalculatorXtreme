@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class LaskutoimituksenKasittelijaTest {
     
@@ -34,6 +36,27 @@ public class LaskutoimituksenKasittelijaTest {
     
     @After
     public void tearDown() {
+    }
+    
+    @Rule
+    public ExpectedException virhe = ExpectedException.none();
+    
+    @Test
+    public void illegalStateExceptionKunAloituspaikkaUlkopuolella() {
+        virhe.expect(IllegalStateException.class);
+        
+        kasittelija.setSyote("1+2");
+        kasittelija.setPaikka(10);
+        kasittelija.lueLaskutoimitus();
+    }
+    
+    @Test
+    public void illegalStateExceptionKunAloitusPaikallaEiLaskutoimitusta() {
+        virhe.expect(IllegalStateException.class);
+        
+        kasittelija.setSyote("12");
+        kasittelija.setPaikka(1);
+        kasittelija.lueLaskutoimitus();
     }
     
     @Test

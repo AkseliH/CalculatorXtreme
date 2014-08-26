@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 public class LuvunKasittelijaTest {
     
@@ -29,6 +31,27 @@ public class LuvunKasittelijaTest {
     
     @After
     public void tearDown() {
+    }
+    
+    @Rule
+    public ExpectedException virhe = ExpectedException.none();
+    
+    @Test
+    public void illegalStateExceptionKunAloituspaikkaUlkopuolella() {
+        virhe.expect(IllegalStateException.class);
+        
+        kasittelija.setSyote("1");
+        kasittelija.setPaikka(5);
+        kasittelija.lueLuku();
+    }
+    
+    @Test
+    public void illegalStateExceptionKunAloitusPaikallaEiLukua() {
+        virhe.expect(IllegalStateException.class);
+        
+        kasittelija.setSyote("3+5");
+        kasittelija.setPaikka(1);
+        kasittelija.lueLuku();
     }
     
     @Test
