@@ -6,7 +6,8 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
 
 /**
  * Tarjoaa toiminnallisuuden funktion lukemiseksi String 
- * tyyppisesta syotteesta ja funktion lisaamiseksi lausekkeeseen. 
+ * tyyppisesta syotteesta ja funktion lisaamiseksi lausekkeeseen.
+ * Jokaista luettavaa funktiota kohti tulee luoda uusi FunktionKasittelija.
  */
 public class FunktionKasittelija {
     
@@ -27,6 +28,13 @@ public class FunktionKasittelija {
         this(kirjasto, "", new Lauseke(), 0);
     }
     
+    /**
+     * Lukee syotteesta yhden kokonaisen tekstielementin alkaen 
+     * kutsuhetken paikasta ja lisaa lausekkeeseen vastaavan funktion.
+     * 
+     * @throws IllegalStateException Kutsuhetken paikalla tulee olla
+     * tuettu funktio ja funktiota tulee seurata sulku.
+     */
     public void lueFunktio() throws IllegalStateException {
         
         if (!merkkiOsaTunnusta()) {
@@ -46,6 +54,9 @@ public class FunktionKasittelija {
         lauseke.lisaaFunktioJaAvaaLohko(lisattava);
     }
     
+    /**
+     * Siirtyy yhtenaisen tekstielementin jalkeiseen paikkaan.
+     */
     private void siirryTunnuksenLoppuun() {
         while (true) {
             
@@ -57,18 +68,18 @@ public class FunktionKasittelija {
         }
     }
     
+    /**
+     * Tarkistaa sisaltyyko paikka tekstielementtiin.
+     * @return 
+     */
     private boolean merkkiOsaTunnusta() {
-        if (!paikkaSisaltyySyotteeseen()) {
-            return false;
-        }
-        
-        if (paikkaSisaltaaSallitunMerkin()) {
-            return true;
-        }                
-        
-        return false;
+        return paikkaSisaltyySyotteeseen() && paikkaSisaltaaSallitunMerkin();
     }
     
+    /**
+     * Tarkistaa onko paikalla sulku ja siirtyy sulun jalkeiseen paikkaan.
+     * @return 
+     */
     private boolean funktiotaSeuraaSulku() {
         if (syote.substring(paikka, paikka + 1).equals("(")) {
             paikka++;
@@ -78,11 +89,19 @@ public class FunktionKasittelija {
         return false;
     }
     
+    
+    /**
+     * Tarkistaa sisaltyyko paikka syotteeseen.
+     * @return 
+     */
     private boolean paikkaSisaltyySyotteeseen() {
         return (paikka >= 0 && paikka < syote.length()) ;
-
     }
     
+    /**
+     * Tarkistaa sisaltaako paikka sallitun merkin.
+     * @return 
+     */
     private boolean paikkaSisaltaaSallitunMerkin() {
         return syote.substring(paikka, paikka + 1).matches("[a-z]");
     }

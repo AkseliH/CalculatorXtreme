@@ -7,7 +7,8 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
 
 /**
  * Tarjoaa toiminnallisuuden String tyyppisen lausekkeen muuntamiseksi
- * suoritettavaan muotoon.
+ * suoritettavaan muotoon. Jokaista lauseketta kohti tulee luoda uusi
+ * MerkkijononKasittelija.
  */
 public class MerkkijononKasittelija {
     

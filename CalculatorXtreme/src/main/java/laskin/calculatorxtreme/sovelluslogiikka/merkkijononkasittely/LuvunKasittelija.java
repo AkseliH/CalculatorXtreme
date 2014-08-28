@@ -6,7 +6,8 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Arvollinen;
 
 /**
  * Tarjoaa toiminnallisuuden luvun luomiseksi String tyyppisesta 
- * syotteesta.
+ * syotteesta. Jokaista luettavaa lukua kohden tulee luoda uusi
+ * Luvunkasittelija.
  */
 public class LuvunKasittelija {
     
@@ -80,6 +81,9 @@ public class LuvunKasittelija {
         return false;
     }
     
+    /**
+     * Siirtyy luvun jalkeiseen paikkaan.
+     */
     private void siirryLuvunLoppuun() {
          while (true) {
             
@@ -91,6 +95,12 @@ public class LuvunKasittelija {
         }
     }
     
+    /**
+     * Tarkistaa onko desimaalipiste kohdattu ja jos ei kirjaa sen
+     * kohdatuksi.
+     * 
+     * @return 
+     */
     private boolean kasitteleDesimaalipiste() {        
         if (!desimaalipisteLoydetty) {
             desimaalipisteLoydetty = true;
@@ -100,6 +110,10 @@ public class LuvunKasittelija {
         return false;
     }
     
+    /**
+     * Tarkistaa onko paikka osa lukua.
+     * @return 
+     */
     private boolean merkkiOsaLukua() {
         if (!paikkaSisaltyySyotteeseen()) {
             return false;
@@ -116,20 +130,28 @@ public class LuvunKasittelija {
         return false;
     }
     
+    /**
+     * Tarkistaa sisaltaako paikka numeron.
+     * @return 
+     */
     private boolean paikkaSisaltaaNumeron() {                
         return syote.substring(paikka, paikka + 1).matches("[0-9]");        
     }
     
+    /**
+     * Tarkistaa sisaltaako paikka desimaalipisteen.
+     * @return 
+     */
     private boolean paikkaSisaltaaDesimaalipisteen() {
         return syote.substring(paikka, paikka + 1).equals(".");
     }
     
+    /**
+     * Tarkistaa sisaltyyko paikka syotteeseen.
+     * @return 
+     */
     private boolean paikkaSisaltyySyotteeseen() {
-        if (paikka >= 0 && paikka < syote.length()) {
-            return true;
-        }
-        
-        return false;
+        return paikka >= 0 && paikka < syote.length();
     }
     
     public int getPaikka() {

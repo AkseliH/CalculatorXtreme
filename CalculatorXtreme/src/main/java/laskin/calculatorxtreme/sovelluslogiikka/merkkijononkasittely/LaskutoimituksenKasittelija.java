@@ -6,7 +6,9 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
 
 /**
  * Tarjoaa toiminnallisuuden laskutoimituksen lukemiseksi String 
- * tyyppisesta syotteesta ja laskutoimituksen lisaamiseksi lausekkeeseen. 
+ * tyyppisesta syotteesta ja laskutoimituksen lisaamiseksi lausekkeeseen.
+ * Jokaista luettavaa laskutoimitusta kohden tulee luoda uusi
+ * LaskutoimituksenKasittelija.
  */
 public class LaskutoimituksenKasittelija {
     
@@ -27,9 +29,16 @@ public class LaskutoimituksenKasittelija {
         this(kirjasto, "", new Lauseke(), 0);
     }
     
+    /**
+     * Lukee laskutoimituksen alkaen kutsuhetken paikasta ja lisaa
+     * laskutoimituksen lausekkeeseen.
+     * 
+     * @throws IllegalStateException Kutsuhetken paikan tulee sisaltaa
+     * laskutoimitus.
+     */
     public void lueLaskutoimitus() throws IllegalStateException {
         
-        if (!merkkiOsaTunnusta()) {
+        if (!paikkaOsaTunnusta()) {
             throw new IllegalStateException();
         } 
         
@@ -40,6 +49,10 @@ public class LaskutoimituksenKasittelija {
          paikka++;
     }
     
+    /**
+     * Tarkistaa sisaltyyko paikka syotteeseen.
+     * @return 
+     */
     private boolean paikkaSisaltyySyotteeseen() {
         if (paikka >= 0 && paikka < syote.length()) {
             return true;
@@ -48,18 +61,18 @@ public class LaskutoimituksenKasittelija {
         return false;
     }
     
-    private boolean merkkiOsaTunnusta() {
-        if (!paikkaSisaltyySyotteeseen()) {
-            return false;
-        }
-        
-        if (paikkaSisaltaaSallitunMerkin()) {
-            return true;
-        }                
-        
-        return false;
+    /**
+     * Tarkistaa onko paikka osa tunnusta.
+     * @return 
+     */
+    private boolean paikkaOsaTunnusta() {
+        return paikkaSisaltyySyotteeseen() && paikkaSisaltaaSallitunMerkin();
     }
     
+    /**
+     * Tarkistaa sisaltaako paikka sallitun merkin.
+     * @return 
+     */
     private boolean paikkaSisaltaaSallitunMerkin() {
         
         if (syote.substring(paikka, paikka + 1).equals("-")) {
