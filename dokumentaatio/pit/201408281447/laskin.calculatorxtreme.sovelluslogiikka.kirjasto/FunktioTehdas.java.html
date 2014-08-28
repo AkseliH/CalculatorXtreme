@@ -1,0 +1,427 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>FunktioTehdas.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_1'></a>
+</td>
+<td class=''><pre><span  class=''>package laskin.calculatorxtreme.sovelluslogiikka.kirjasto;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_2'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_3'></a>
+</td>
+<td class=''><pre><span  class=''>import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Sinifunktio;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_4'></a>
+</td>
+<td class=''><pre><span  class=''>import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.toiminnot.Kosinifunktio;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_5'></a>
+</td>
+<td class=''><pre><span  class=''>import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_6'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_7'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_8'></a>
+</td>
+<td class=''><pre><span  class=''> * Tehdasluokka, joka tarjoaa toiminnallisuuden oikeiden funktio-olioiden</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_9'></a>
+</td>
+<td class=''><pre><span  class=''> * luomiseksi String tyyppisen tunnisteen perusteella.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_10'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_11'></a>
+</td>
+<td class='covered'><pre><span  class=''>public class FunktioTehdas {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_12'></a>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_13'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_14'></a>
+</td>
+<td class=''><pre><span  class=''>     * Palauttaa tunnusta vastaavan funktion. Jos tallaista ei ole </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_15'></a>
+</td>
+<td class=''><pre><span  class=''>     * palauttaa null.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_16'/>
+16
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_16'></a>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_17'/>
+17
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_17'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param tunnus Tunnus, jolla haetaan.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_18'/>
+18
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_18'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return Tunnusta vastaava funktio.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_19'/>
+19
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_19'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_20'/>
+20
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_20'></a>
+</td>
+<td class=''><pre><span  class=''>    public Funktio hae(String tunnus) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_21'/>
+21
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_21'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (tunnus.equals(&#34;sin&#34;)) { return new Sinifunktio(); }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_22'/>
+22
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_22'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (tunnus.equals(&#34;cos&#34;)) { return new Kosinifunktio(); }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_23'/>
+23
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_23'></a>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_24'/>
+24
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_24'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return null;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_25'/>
+25
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_25'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@70bd631a_26'/>
+26
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_26'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@70bd631a_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_21'/> 
+
+<p class='KILLED'>mutated return of Object value for laskin/calculatorxtreme/sovelluslogiikka/kirjasto/FunktioTehdas::hae to ( if (x != null) null else throw new RuntimeException ) : KILLED -> laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest.laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest</p> <p class='KILLED'>negated conditional : KILLED -> laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest.laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@70bd631a_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_22'/> 
+
+<p class='KILLED'>mutated return of Object value for laskin/calculatorxtreme/sovelluslogiikka/kirjasto/FunktioTehdas::hae to ( if (x != null) null else throw new RuntimeException ) : KILLED -> laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest.laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest</p> <p class='KILLED'>negated conditional : KILLED -> laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest.laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@70bd631a_24'>24</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@70bd631a_24'/> 
+
+<p class='KILLED'>mutated return of Object value for laskin/calculatorxtreme/sovelluslogiikka/kirjasto/FunktioTehdas::hae to ( if (x != null) null else throw new RuntimeException ) : KILLED -> laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest.laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest.laskin.calculatorxtreme.sovelluslogiikka.kirjasto.FunktioTehdasTest (9 ms)</li><li>laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.FunktionKasittelijaTest.laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.FunktionKasittelijaTest (4 ms)</li><li>laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjastoTest.laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjastoTest (2 ms)</li><li>laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.MerkkijononKasittelijaTest.laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.MerkkijononKasittelijaTest (11 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>
