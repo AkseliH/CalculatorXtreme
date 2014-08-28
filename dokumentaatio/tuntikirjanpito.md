@@ -39,3 +39,5 @@ koodikatselmoinnin aloitus. Ei varsinaista edistymista.
 
 **26.8.2014** 4h 30min: Testeja, varsinkin virheiden testausta.
  
+**28.8.2014** 1h 30min: Hieman javadocia ja kolmas sekvenssikaavio.
+
