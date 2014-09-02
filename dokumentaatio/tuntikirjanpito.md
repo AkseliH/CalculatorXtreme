@@ -41,3 +41,4 @@ koodikatselmoinnin aloitus. Ei varsinaista edistymista.
  
 **28.8.2014** 1h 30min: Hieman javadocia ja kolmas sekvenssikaavio.
 
+**2.9.2014** 1h 30 min: Ohjelman rakenteen kuvaamista.
