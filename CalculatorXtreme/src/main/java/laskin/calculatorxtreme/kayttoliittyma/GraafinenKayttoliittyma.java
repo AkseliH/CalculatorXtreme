@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 
+/**
+ * Ajettava graafinen kayttoliittyma.
+ */
 public class GraafinenKayttoliittyma implements Runnable {
     
      private JFrame frame;

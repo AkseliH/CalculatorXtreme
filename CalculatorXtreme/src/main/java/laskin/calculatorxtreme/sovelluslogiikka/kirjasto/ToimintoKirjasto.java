@@ -10,7 +10,14 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
  */
 public class ToimintoKirjasto {
     
+    /**
+     * Tehdas, jolta haetaan laskutoimitukset.
+     */
     private LaskutoimitusTehdas laskutoimitukset;
+    
+    /**
+     * Tehdas, jolta haetaan funktiot.
+     */
     private FunktioTehdas funktiot;
     
     

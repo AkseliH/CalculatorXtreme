@@ -4,6 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
+/**
+ * Tapahtumankuuntelija, joka lisaa syotekenttaan konstruktorin
+ * parametrina annetun merkkijonon.
+ */
 public class NappaimenKirjoittaja implements ActionListener {
     
     private String syote;

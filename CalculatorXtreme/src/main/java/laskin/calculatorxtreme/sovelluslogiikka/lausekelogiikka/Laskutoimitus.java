@@ -6,8 +6,20 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
  */
 public abstract class Laskutoimitus implements Arvollinen {
     
+    /**
+     * Ensimmainen laskettava.
+     */
     private Arvollinen etujasen;
+    
+    /**
+     * Toinen laskettava.
+     */
     private Arvollinen takajasen;
+    
+    /**
+     * Laskutoimituksen laskujarjestys prioritetti. Laskujarjestys
+     * suuremmasta prioriteetista pienempaan.
+     */
     private int prioriteetti;
     
     public Laskutoimitus(int prioriteetti) {

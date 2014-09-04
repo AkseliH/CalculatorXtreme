@@ -6,6 +6,10 @@ import javax.swing.JTextField;
 import laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.MerkkijononKasittelija;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 
+/**
+ * Tapahtumankuuntelija, joka laskee syotekentassa olevan lausekkeen arvon
+ * ja tulostaa tuloksen tulostekenttaan.
+ */
 public class LausekkeenLaskija implements ActionListener {
     
     private JTextField syotekentta;

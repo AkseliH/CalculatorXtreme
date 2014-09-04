@@ -4,6 +4,9 @@ import java.util.Scanner;
 import laskin.calculatorxtreme.sovelluslogiikka.merkkijononkasittely.MerkkijononKasittelija;
 import laskin.calculatorxtreme.sovelluslogiikka.kirjasto.ToimintoKirjasto;
 
+/**
+ * Vaihtoehtoinen, tekstipohjainen kayttoliittyma.
+ */
 public class TekstiKayttoliittyma {
     
     private Scanner lukija;

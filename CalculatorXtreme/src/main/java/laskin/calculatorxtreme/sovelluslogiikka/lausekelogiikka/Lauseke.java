@@ -13,7 +13,14 @@ import java.util.List;
  */
 public class Lauseke implements Arvollinen {
     
+    /**
+     * Lausekkeen uloin lohko.
+     */
     private Lohko paalohko;
+    
+    /**
+     * Lausekkeen lisalohkot eli "sulut".
+     */
     private List<Lohko> lohkot;
     
     public Lauseke() {

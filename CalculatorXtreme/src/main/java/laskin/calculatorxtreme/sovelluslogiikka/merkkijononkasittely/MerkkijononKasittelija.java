@@ -12,9 +12,24 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Luku;
  */
 public class MerkkijononKasittelija {
     
+    /**
+     * Syote, jota kasitelleen.
+     */
     private String syote;
+    
+    /**
+     * ToimintoKirjasto, josta haetaan lausekkeen elementit.
+     */
     private ToimintoKirjasto kirjasto;
+    
+    /**
+     * Lauseke, joka rakennetaan syotteesta.
+     */
     private Lauseke lauseke;
+    
+    /**
+     * Muisti syotteen kohdalle, jossa MerkkijononKasittelija on.
+     */
     private int paikka;
     
     public MerkkijononKasittelija(String syote, ToimintoKirjasto kirjasto) {

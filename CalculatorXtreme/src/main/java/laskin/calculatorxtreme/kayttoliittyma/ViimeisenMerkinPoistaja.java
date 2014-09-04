@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
+/**
+ * Tapahtumankuuntelija, joka poistaa syotekentan viimeisen merkin.
+ */
 public class ViimeisenMerkinPoistaja implements ActionListener {
     
     private JTextField syotekentta;

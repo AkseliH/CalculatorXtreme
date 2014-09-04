@@ -6,6 +6,10 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
  */
 public abstract class Funktio implements Arvollinen {
     
+    /**
+     * Funktion argumentti, eli milla muuttujan arvolla funktion arvoa
+     * kysytaan.
+     */
     private Arvollinen argumentti;
     
     public Funktio() {

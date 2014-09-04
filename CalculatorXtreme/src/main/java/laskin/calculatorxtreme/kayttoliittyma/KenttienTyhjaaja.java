@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
+/**
+ * Tapahtumankuuntelija, joka tyhjentaa kentat.
+ */
 public class KenttienTyhjaaja implements ActionListener {
     
     private JTextField syotekentta;
