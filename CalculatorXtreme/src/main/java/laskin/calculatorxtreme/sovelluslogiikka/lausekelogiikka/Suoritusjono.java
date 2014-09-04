@@ -8,7 +8,15 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
  */
 public class Suoritusjono implements Arvollinen {
     
+    /**
+     * Viimeisin Suoritusjonoon lisatty laskutoimitus.
+     */
     private Laskutoimitus viimeinen;
+    
+    /**
+     * Muistipaikka Arvolliselle, joka asetetaan seuraavassa laskutoimituksen
+     * lisayksessa.
+     */
     private Arvollinen seuraavaArvollinen;
     
     public Suoritusjono(Arvollinen ensimmainenArvollinen) {

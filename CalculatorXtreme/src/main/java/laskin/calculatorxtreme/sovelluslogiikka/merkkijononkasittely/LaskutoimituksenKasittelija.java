@@ -12,9 +12,24 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Lauseke;
  */
 public class LaskutoimituksenKasittelija {
     
+    /**
+     * ToimintoKirjasto, josta laskutoimitus haetaan.
+     */
     private ToimintoKirjasto kirjasto;
+    
+    /**
+     * Lauseke, johon laskutoimitus lisataan.
+     */
     private Lauseke lauseke;
+    
+    /**
+     * Syote, josta laskutoimitus luetaan.
+     */
     private String syote;
+    
+    /**
+     * Muisti syotteen kohdalle, jossa LaskutoimituksenKasittelija on.
+     */
     private int paikka;
     
     public LaskutoimituksenKasittelija(ToimintoKirjasto kirjasto, 

@@ -11,8 +11,19 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Arvollinen;
  */
 public class LuvunKasittelija {
     
+    /**
+     * Syote, josta luku luetaan.
+     */
     private String syote;
+    
+    /**
+     * Muisti syotteen kohdalle, jossa LuvunKasittelija on.
+     */
     private int paikka;
+    
+    /**
+     * Muisti sille, onko luvussa esiintynyt desimaalipiste.
+     */
     private boolean desimaalipisteLoydetty;
     
     public LuvunKasittelija(String lauseke, int aloitusPaikka) {

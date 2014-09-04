@@ -52,7 +52,7 @@ public class LohkoTest {
     public void illegalArgumentExceptionKunLisattavaLaskutoimitusNull() {
         virhe.expect(IllegalArgumentException.class);
         
-        lohko.lisaaJonoonLaskutoimitus(null);
+        lohko.lisaaLohkoonLaskutoimitus(null);
     }
     
     @Test
@@ -81,7 +81,7 @@ public class LohkoTest {
     @Test
     public void arvoOikeinYhdellaLaskutoimituksella() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(-2));
         lohko.paataLohko();
         
@@ -91,9 +91,9 @@ public class LohkoTest {
     @Test
     public void arvoOikeinKunOikeaLaskujarjestysViimeisestaEnsimmaiseen() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(-2));
-        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaLohkoonLaskutoimitus(new Kertolasku());
         lohko.lisaaJonoonArvollinen(new Luku(5));
         lohko.paataLohko();
         
@@ -103,9 +103,9 @@ public class LohkoTest {
     @Test
     public void arvoOikeinKunOikeaLaskujarjestysEnsimmaisestaViimeiseen() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaLohkoonLaskutoimitus(new Kertolasku());
         lohko.lisaaJonoonArvollinen(new Luku(-2));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(5));
         lohko.paataLohko();
         
@@ -115,11 +115,11 @@ public class LohkoTest {
     @Test
     public void arvoOikeinKunOikeaLaskujarjestysVaihteleva() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(-2));
-        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaLohkoonLaskutoimitus(new Kertolasku());
         lohko.lisaaJonoonArvollinen(new Luku(5));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(3));
         lohko.paataLohko();
         
@@ -129,11 +129,11 @@ public class LohkoTest {
     @Test
     public void laskujarjestysOikeinPerakkaisillaMiinusLaskuilla() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+        lohko.lisaaLohkoonLaskutoimitus(new Miinus());
         lohko.lisaaJonoonArvollinen(new Luku(-2));
-        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+        lohko.lisaaLohkoonLaskutoimitus(new Miinus());
         lohko.lisaaJonoonArvollinen(new Luku(5));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(3));
         lohko.paataLohko();
         
@@ -143,13 +143,13 @@ public class LohkoTest {
     @Test
     public void useampiTasoinenLaskujarjestysOikein() {
         lohko.lisaaJonoonArvollinen(new Luku(5));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Potenssi());
+        lohko.lisaaLohkoonLaskutoimitus(new Potenssi());
         lohko.lisaaJonoonArvollinen(new Luku(3));
-        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaLohkoonLaskutoimitus(new Kertolasku());
         lohko.lisaaJonoonArvollinen(new Luku(3));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(5));
         lohko.paataLohko();
         
@@ -159,27 +159,27 @@ public class LohkoTest {
     @Test
     public void monimutkainenLaskujarjestysOikein() {
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Potenssi());
+        lohko.lisaaLohkoonLaskutoimitus(new Potenssi());
         lohko.lisaaJonoonArvollinen(new Luku(-2));
-        lohko.lisaaJonoonLaskutoimitus(new Miinus());
+        lohko.lisaaLohkoonLaskutoimitus(new Miinus());
         lohko.lisaaJonoonArvollinen(new Luku(6));
-        lohko.lisaaJonoonLaskutoimitus(new Jakolasku());
-        lohko.lisaaJonoonArvollinen(new Luku(3));
-        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaLohkoonLaskutoimitus(new Jakolasku());
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
+        lohko.lisaaLohkoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaJonoonArvollinen(new Luku(5));
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(3));
         lohko.paataLohko();
         
-        assertEquals(-0.75, lohko.arvo(), 0.00001);
+        assertEquals(-11.75, lohko.arvo(), 0.00001);
     }
     
     @Test
     public void prioritettiOikein() {
+        lohko.lisaaJonoonArvollinen(new Luku(5));
+        lohko.lisaaLohkoonLaskutoimitus(new Plus());
         lohko.lisaaJonoonArvollinen(new Luku(2));
-        lohko.lisaaJonoonLaskutoimitus(new Plus());
-        lohko.lisaaJonoonArvollinen(new Luku(3));
-        lohko.lisaaJonoonLaskutoimitus(new Kertolasku());
+        lohko.lisaaLohkoonLaskutoimitus(new Kertolasku());
         lohko.lisaaJonoonArvollinen(new Luku(4));
         
         assertEquals(2, lohko.nykyinenPrioriteetti());

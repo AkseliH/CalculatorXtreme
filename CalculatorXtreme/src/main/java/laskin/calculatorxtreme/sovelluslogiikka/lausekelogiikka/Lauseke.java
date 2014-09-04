@@ -92,7 +92,7 @@ public class Lauseke implements Arvollinen {
      * @param laskutoimitus Lisattava laskutoimitus.
      */
     public void lisaaLaskutoimitus(Laskutoimitus laskutoimitus) {
-        this.nykyinenLohko().lisaaJonoonLaskutoimitus(laskutoimitus);
+        this.nykyinenLohko().lisaaLohkoonLaskutoimitus(laskutoimitus);
     }
     
     /**

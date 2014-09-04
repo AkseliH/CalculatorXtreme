@@ -11,9 +11,24 @@ import laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka.Funktio;
  */
 public class FunktionKasittelija {
     
+    /**
+     * ToimintoKirjasto, josta haetaan funktio.
+     */
     private ToimintoKirjasto kirjasto;
+    
+    /**
+     * Lauseke, johon funktio lisataan.
+     */
     private Lauseke lauseke;
+    
+    /**
+     * Syote, josta funktio luetaan.
+     */
     private String syote;
+    
+    /**
+     * Muisti syotteen kohdalle, jossa FunktionKasittelija on.
+     */
     private int paikka;
     
     public FunktionKasittelija(ToimintoKirjasto kirjasto, String syote, 

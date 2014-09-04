@@ -36,7 +36,7 @@ public class Lohko implements Arvollinen {
      * @throws IllegalArgumentException Lisattava ei saa olla null.
      * @throws IllegalStateException Lohkon muisti ei saa olla tyhja.
      */
-    public void lisaaJonoonLaskutoimitus(Laskutoimitus lisattava) 
+    public void lisaaLohkoonLaskutoimitus(Laskutoimitus lisattava) 
             throws IllegalArgumentException, IllegalStateException {
        if (lisattava == null) {
            throw new IllegalArgumentException();
@@ -203,6 +203,11 @@ public class Lohko implements Arvollinen {
         return suoritustasot.get(0).onTyhja() && seuraavaArvollinen == null;
     }
     
+    /**
+     * Kertoo, milla prioriteettitasolla kutsuhetkella ollaan.
+     * 
+     * @return prioriteetti
+     */
     public int nykyinenPrioriteetti() {
         return suoritustasot.size();
     }

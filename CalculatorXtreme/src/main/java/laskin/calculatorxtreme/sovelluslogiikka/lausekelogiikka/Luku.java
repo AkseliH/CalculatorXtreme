@@ -5,6 +5,9 @@ package laskin.calculatorxtreme.sovelluslogiikka.lausekelogiikka;
  */
 public class Luku implements Arvollinen {
     
+    /**
+     * Lukuarvo.
+     */
     private double arvo;
     
     public Luku(double arvo) {
